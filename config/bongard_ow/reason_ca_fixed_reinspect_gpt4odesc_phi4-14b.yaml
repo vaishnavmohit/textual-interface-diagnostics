@@ -1,0 +1,26 @@
+# C4 fixed reinspection: CA (C2 descriptions) + ONE preregistered fixed
+# re-inspection of the query image, then a final decision.
+# Budget-matched control for ICA (C5): same one-extra-perception-call cost,
+# but the question is FIXED, not reasoner-generated. Requires the context=ca
+# describe run for gpt-4o first.
+#   python main.py --config config/bongard_ow/reason_ca_fixed_reinspect_gpt4odesc_phi4-14b.yaml
+model:
+  module: "pri.pipeline"
+  function: "run_fixed_reinspect"
+  parameters:
+    dataset: "bongard_ow"
+    json_path: "${DATA_DIR}/bongard_ow/rearranged_bongard.json"
+    image_dir: "${DATA_DIR}/bongard_ow"
+    reasoner_model: "phi4:14b"
+    perception_model: "gpt-4o"
+    reinspection_model: "gpt-4o"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_ow_gpt4odesc"
+    split_name: "bongard_ow"
+    num_samples: 5                      # smoke run; set 500 for the full split
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 2048
+    num_ctx: 8192
+    think: false

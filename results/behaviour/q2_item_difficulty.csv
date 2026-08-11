@@ -1,0 +1,504 @@
+test_id,n_models,n_correct,concept,commonsense,polarity,frac_correct
+0000_neg_0,9,8,fashion magazine,0,negative,0.8888888888888888
+0000_pos_0,9,6,fashion magazine,0,positive,0.6666666666666666
+0001_neg_0,9,5,solar system,0,negative,0.5555555555555556
+0001_pos_0,9,7,solar system,0,positive,0.7777777777777778
+0002_neg_0,9,8,bunch branches green plant,0,negative,0.8888888888888888
+0002_pos_0,9,8,bunch branches green plant,0,positive,0.8888888888888888
+0003_neg_0,9,6,group photo wedding reception,0,negative,0.6666666666666666
+0003_pos_0,9,7,group photo wedding reception,0,positive,0.7777777777777778
+0004_neg_0,9,5,pile rusty metal bolts,9,negative,0.5555555555555556
+0004_pos_0,9,6,pile rusty metal bolts,9,positive,0.6666666666666666
+0005_neg_0,9,1,wheat field,0,negative,0.1111111111111111
+0005_pos_0,9,5,wheat field,0,positive,0.5555555555555556
+0006_neg_0,9,7,rubber kayak in water,3,negative,0.7777777777777778
+0006_pos_0,9,8,rubber kayak in water,3,positive,0.8888888888888888
+0007_neg_0,9,9,strawberry leaves,0,negative,1.0
+0007_pos_0,9,9,strawberry leaves,0,positive,1.0
+0008_neg_0,9,7,perched mantis hanging plant,0,negative,0.7777777777777778
+0008_pos_0,9,7,perched mantis hanging plant,0,positive,0.7777777777777778
+0009_neg_0,9,9,group extended family,9,negative,1.0
+0009_pos_0,9,8,group extended family,9,positive,0.8888888888888888
+0010_neg_0,9,7,ellipsoidal fruits,3,negative,0.7777777777777778
+0010_pos_0,9,9,ellipsoidal fruits,3,positive,1.0
+0011_neg_0,9,8,old style bicycle,0,negative,0.8888888888888888
+0011_pos_0,9,4,old style bicycle,0,positive,0.4444444444444444
+0012_neg_0,9,6,stamp pictures,0,negative,0.6666666666666666
+0012_pos_0,9,7,stamp pictures,0,positive,0.7777777777777778
+0013_neg_0,9,7,branches covered heavily snow,0,negative,0.7777777777777778
+0013_pos_0,9,7,branches covered heavily snow,0,positive,0.7777777777777778
+0014_neg_0,9,2,person playing guitar,1,negative,0.2222222222222222
+0014_pos_0,9,6,person playing guitar,1,positive,0.6666666666666666
+0015_neg_0,9,8,bright red fish,0,negative,0.8888888888888888
+0015_pos_0,9,6,bright red fish,0,positive,0.6666666666666666
+0016_neg_0,9,7,reeds swaying in wind,0,negative,0.7777777777777778
+0016_pos_0,9,8,reeds swaying in wind,0,positive,0.8888888888888888
+0017_neg_0,9,8,instruments quantitative measurements,0,negative,0.8888888888888888
+0017_pos_0,9,5,instruments quantitative measurements,0,positive,0.5555555555555556
+0018_neg_0,9,5,various colors pigments,7,negative,0.5555555555555556
+0018_pos_0,9,6,various colors pigments,7,positive,0.6666666666666666
+0019_neg_0,9,6,candle chandeliers above table chairs,8,negative,0.6666666666666666
+0019_pos_0,9,6,candle chandeliers above table chairs,8,positive,0.6666666666666666
+0020_neg_0,9,5,colorful beams light,0,negative,0.5555555555555556
+0020_pos_0,9,9,colorful beams light,0,positive,1.0
+0021_neg_0,9,2,cars city streets night,0,negative,0.2222222222222222
+0021_pos_0,9,8,cars city streets night,0,positive,0.8888888888888888
+0022_neg_0,9,5,grilled steaks,2,negative,0.5555555555555556
+0022_pos_0,9,6,grilled steaks,2,positive,0.6666666666666666
+0023_neg_0,9,8,radio towers,0,negative,0.8888888888888888
+0023_pos_0,9,8,radio towers,0,positive,0.8888888888888888
+0024_neg_0,9,5,top snow covered mountain,0,negative,0.5555555555555556
+0024_pos_0,9,8,top snow covered mountain,0,positive,0.8888888888888888
+0025_neg_0,9,5,steel beams building,3,negative,0.5555555555555556
+0025_pos_0,9,7,steel beams building,3,positive,0.7777777777777778
+0026_neg_0,9,8,people walking city street,0,negative,0.8888888888888888
+0026_pos_0,9,8,people walking city street,0,positive,0.8888888888888888
+0027_neg_0,9,8,christmas ornament tree lights,0,negative,0.8888888888888888
+0027_pos_0,9,8,christmas ornament tree lights,0,positive,0.8888888888888888
+0028_neg_0,9,7,keyboard piano,0,negative,0.7777777777777778
+0028_pos_0,9,7,keyboard piano,0,positive,0.7777777777777778
+0029_neg_0,9,7,lightning hitting through cloudy sky,0,negative,0.7777777777777778
+0029_pos_0,9,8,lightning hitting through cloudy sky,0,positive,0.8888888888888888
+0030_neg_0,9,7,hand-held escalators on stairs,0,negative,0.7777777777777778
+0030_pos_0,9,8,hand-held escalators on stairs,0,positive,0.8888888888888888
+0031_neg_0,9,6,kids playing in river,0,negative,0.6666666666666666
+0031_pos_0,9,5,kids playing in river,0,positive,0.5555555555555556
+0032_neg_0,9,7,tractors working farm field,0,negative,0.7777777777777778
+0032_pos_0,9,5,tractors working farm field,0,positive,0.5555555555555556
+0033_neg_0,9,3,bicycle placed in corner,0,negative,0.3333333333333333
+0033_pos_0,9,6,bicycle placed in corner,0,positive,0.6666666666666666
+0034_neg_0,9,6,tungsten lamp glowing,3,negative,0.6666666666666666
+0034_pos_0,9,6,tungsten lamp glowing,3,positive,0.6666666666666666
+0035_neg_0,9,7,house heavy snow,0,negative,0.7777777777777778
+0035_pos_0,9,7,house heavy snow,0,positive,0.7777777777777778
+0036_neg_0,9,3,small wooden boat floating lake,0,negative,0.3333333333333333
+0036_pos_0,9,5,small wooden boat floating lake,0,positive,0.5555555555555556
+0037_neg_0,9,2,girl long and thin braids,5,negative,0.2222222222222222
+0037_pos_0,9,7,girl long and thin braids,5,positive,0.7777777777777778
+0038_neg_0,9,7,human footprints sand beach,0,negative,0.7777777777777778
+0038_pos_0,9,8,human footprints sand beach,0,positive,0.8888888888888888
+0039_neg_0,9,8,handicap sign,0,negative,0.8888888888888888
+0039_pos_0,9,8,handicap sign,0,positive,0.8888888888888888
+0040_neg_0,9,7,yellow trumpet flowers,0,negative,0.7777777777777778
+0040_pos_0,9,7,yellow trumpet flowers,0,positive,0.7777777777777778
+0041_neg_0,9,3,fishing boats docked pier,0,negative,0.3333333333333333
+0041_pos_0,9,7,fishing boats docked pier,0,positive,0.7777777777777778
+0042_neg_0,9,5,monsters mythological stories,6,negative,0.5555555555555556
+0042_pos_0,9,6,monsters mythological stories,6,positive,0.6666666666666666
+0043_neg_0,9,8,lettuce vegetable patch,0,negative,0.8888888888888888
+0043_pos_0,9,7,lettuce vegetable patch,0,positive,0.7777777777777778
+0044_neg_0,9,8,little kids steering cars,0,negative,0.8888888888888888
+0044_pos_0,9,7,little kids steering cars,0,positive,0.7777777777777778
+0045_neg_0,9,7,dense binary numbers,6,negative,0.7777777777777778
+0045_pos_0,9,5,dense binary numbers,6,positive,0.5555555555555556
+0046_neg_0,9,7,traces left sand dunes,0,negative,0.7777777777777778
+0046_pos_0,9,8,traces left sand dunes,0,positive,0.8888888888888888
+0047_neg_0,9,6,closeup red brick wall,3,negative,0.6666666666666666
+0047_pos_0,9,4,closeup red brick wall,3,positive,0.4444444444444444
+0048_neg_0,9,6,black horse,0,negative,0.6666666666666666
+0048_pos_0,9,8,black horse,0,positive,0.8888888888888888
+0049_neg_0,9,8,soldier little girl,0,negative,0.8888888888888888
+0049_pos_0,9,5,soldier little girl,0,positive,0.5555555555555556
+0050_neg_0,9,7,aircraft carrier,0,negative,0.7777777777777778
+0050_pos_0,9,6,aircraft carrier,0,positive,0.6666666666666666
+0051_neg_0,9,8,mathematical formulas on blackboard,6,negative,0.8888888888888888
+0051_pos_0,9,8,mathematical formulas on blackboard,6,positive,0.8888888888888888
+0052_neg_0,9,5,persons riding bicycles,1,negative,0.5555555555555556
+0052_pos_0,9,4,persons riding bicycles,1,positive,0.4444444444444444
+0053_neg_0,9,8,men playing basketball,0,negative,0.8888888888888888
+0053_pos_0,9,8,men playing basketball,0,positive,0.8888888888888888
+0054_neg_0,9,7,wrestling competition,0,negative,0.7777777777777778
+0054_pos_0,9,7,wrestling competition,0,positive,0.7777777777777778
+0055_neg_0,9,6,close-up view sprouting stamen,0,negative,0.6666666666666666
+0055_pos_0,9,9,close-up view sprouting stamen,0,positive,1.0
+0056_neg_0,8,5,police officers standing on street,0,negative,0.625
+0056_pos_0,8,8,police officers standing on street,0,positive,1.0
+0057_neg_0,8,8,aerial view city,0,negative,1.0
+0057_pos_0,8,8,aerial view city,0,positive,1.0
+0058_neg_0,8,5,huge crystal chandelier hanging ceiling,3,negative,0.625
+0058_pos_0,8,6,huge crystal chandelier hanging ceiling,3,positive,0.75
+0059_neg_0,8,7,little girl princess costume,0,negative,0.875
+0059_pos_0,8,7,little girl princess costume,0,positive,0.875
+0060_neg_0,8,4,mesmerizing light show concert,0,negative,0.5
+0060_pos_0,8,7,mesmerizing light show concert,0,positive,0.875
+0061_neg_0,8,6,abstract artwork painting,9,negative,0.75
+0061_pos_0,8,5,abstract artwork painting,9,positive,0.625
+0062_neg_0,8,5,bunch vibrant flowers,0,negative,0.625
+0062_pos_0,8,5,bunch vibrant flowers,0,positive,0.625
+0063_neg_0,8,5,white snowflakes,0,negative,0.625
+0063_pos_0,8,8,white snowflakes,0,positive,1.0
+0064_neg_0,8,3,fried noodles,2,negative,0.375
+0064_pos_0,8,8,fried noodles,2,positive,1.0
+0065_neg_0,8,6,warning board wild,0,negative,0.75
+0065_pos_0,8,5,warning board wild,0,positive,0.625
+0066_neg_0,8,5,pile bullet shells,0,negative,0.625
+0066_pos_0,8,6,pile bullet shells,0,positive,0.75
+0067_neg_0,8,5,colorful skulls,0,negative,0.625
+0067_pos_0,8,7,colorful skulls,0,positive,0.875
+0068_neg_0,8,6,geometric painting abstractionist,9,negative,0.75
+0068_pos_0,8,5,geometric painting abstractionist,9,positive,0.625
+0069_neg_0,8,6,person yoga in wilderness,0,negative,0.75
+0069_pos_0,8,5,person yoga in wilderness,0,positive,0.625
+0070_neg_0,8,7,gift boxes tied ribbons,0,negative,0.875
+0070_pos_0,8,4,gift boxes tied ribbons,0,positive,0.5
+0071_neg_0,8,6,hockey stadium,0,negative,0.75
+0071_pos_0,8,6,hockey stadium,0,positive,0.75
+0072_neg_0,8,7,little girl dressed butterfly costume,0,negative,0.875
+0072_pos_0,8,8,little girl dressed butterfly costume,0,positive,1.0
+0073_neg_0,8,7,group sheep grazing green grass,4,negative,0.875
+0073_pos_0,8,6,group sheep grazing green grass,4,positive,0.75
+0074_neg_0,8,6,round birthday cake,2,negative,0.75
+0074_pos_0,8,6,round birthday cake,2,positive,0.75
+0075_neg_0,8,6,girl leading horse,0,negative,0.75
+0075_pos_0,8,6,girl leading horse,0,positive,0.75
+0076_neg_0,8,5,various rings,0,negative,0.625
+0076_pos_0,8,3,various rings,0,positive,0.375
+0077_neg_0,8,6,waterfront terrace,0,negative,0.75
+0077_pos_0,8,7,waterfront terrace,0,positive,0.875
+0078_neg_0,8,7,backlit photo couple,0,negative,0.875
+0078_pos_0,8,6,backlit photo couple,0,positive,0.75
+0079_neg_0,8,3,pictures banana,0,negative,0.375
+0079_pos_0,8,7,pictures banana,0,positive,0.875
+0080_neg_0,8,8,closeup cat,0,negative,1.0
+0080_pos_0,8,7,closeup cat,0,positive,0.875
+0081_neg_0,8,7,closeup view horse head,0,negative,0.875
+0081_pos_0,8,5,closeup view horse head,0,positive,0.625
+0082_neg_0,8,1,live coral sea floor,0,negative,0.125
+0082_pos_0,8,5,live coral sea floor,0,positive,0.625
+0083_neg_0,8,4,handbag hanging on somewhere,8,negative,0.5
+0083_pos_0,8,8,handbag hanging on somewhere,8,positive,1.0
+0084_neg_0,8,2,wooden fence grassy field,3,negative,0.25
+0084_pos_0,8,6,wooden fence grassy field,3,positive,0.75
+0085_neg_0,8,7,building stone columns,0,negative,0.875
+0085_pos_0,8,5,building stone columns,0,positive,0.625
+0086_neg_0,8,6,transparent glass,9,negative,0.75
+0086_pos_0,8,6,transparent glass,9,positive,0.75
+0087_neg_0,8,7,knives forks on table,0,negative,0.875
+0087_pos_0,8,7,knives forks on table,0,positive,0.875
+0088_neg_0,8,8,boats lake,0,negative,1.0
+0088_pos_0,8,7,boats lake,0,positive,0.875
+0089_neg_0,8,7,person holding camera,0,negative,0.875
+0089_pos_0,8,7,person holding camera,0,positive,0.875
+0090_neg_0,8,7,knitted sweater,0,negative,0.875
+0090_pos_0,8,7,knitted sweater,0,positive,0.875
+0091_neg_0,8,6,red bows,0,negative,0.75
+0091_pos_0,8,7,red bows,0,positive,0.875
+0092_neg_0,8,8,heart shaped symbol,0,negative,1.0
+0092_pos_0,8,5,heart shaped symbol,0,positive,0.625
+0093_neg_0,8,4,row red wine bottles,0,negative,0.5
+0093_pos_0,8,7,row red wine bottles,0,positive,0.875
+0094_neg_0,8,6,tennis racket or court,5,negative,0.75
+0094_pos_0,8,5,tennis racket or court,5,positive,0.625
+0095_neg_0,8,4,man training gym,0,negative,0.5
+0095_pos_0,8,5,man training gym,0,positive,0.625
+0096_neg_0,8,6,keyboard old typewriter,9,negative,0.75
+0096_pos_0,8,7,keyboard old typewriter,9,positive,0.875
+0097_neg_0,8,5,metal coins scattered table,4,negative,0.625
+0097_pos_0,8,5,metal coins scattered table,4,positive,0.625
+0098_neg_0,8,2,woman red dress dancing,0,negative,0.25
+0098_pos_0,8,4,woman red dress dancing,0,positive,0.5
+0099_neg_0,8,2,threaded light bulb,0,negative,0.25
+0099_pos_0,8,8,threaded light bulb,0,positive,1.0
+0100_neg_0,8,7,flyable animal tree,4,negative,0.875
+0100_pos_0,8,4,flyable animal tree,4,positive,0.5
+0101_neg_0,8,5,axe wooden handle,0,negative,0.625
+0101_pos_0,8,2,axe wooden handle,0,positive,0.25
+0102_neg_0,8,6,crowded car stream road,0,negative,0.75
+0102_pos_0,8,7,crowded car stream road,0,positive,0.875
+0103_neg_0,8,5,cucumber vine,0,negative,0.625
+0103_pos_0,8,7,cucumber vine,0,positive,0.875
+0104_neg_0,8,4,man playing drum kit,0,negative,0.5
+0104_pos_0,8,6,man playing drum kit,0,positive,0.75
+0105_neg_0,8,7,sphere bracket,0,negative,0.875
+0105_pos_0,8,6,sphere bracket,0,positive,0.75
+0106_neg_0,8,6,trains multiple tracks,0,negative,0.75
+0106_pos_0,8,4,trains multiple tracks,0,positive,0.5
+0107_neg_0,8,6,man speech group people,0,negative,0.75
+0107_pos_0,8,7,man speech group people,0,positive,0.875
+0108_neg_0,8,6,people playing golf,0,negative,0.75
+0108_pos_0,8,6,people playing golf,0,positive,0.75
+0109_neg_0,8,7,underground tunnels beneath city,0,negative,0.875
+0109_pos_0,8,5,underground tunnels beneath city,0,positive,0.625
+0110_neg_0,8,7,woman white wedding dress,0,negative,0.875
+0110_pos_0,8,8,woman white wedding dress,0,positive,1.0
+0111_neg_0,8,3,boars wild,0,negative,0.375
+0111_pos_0,8,6,boars wild,0,positive,0.75
+0112_neg_0,8,3,wooden floor living room,3,negative,0.375
+0112_pos_0,8,5,wooden floor living room,3,positive,0.625
+0113_neg_0,8,5,part dolphin's body surfacing,0,negative,0.625
+0113_pos_0,8,7,part dolphin's body surfacing,0,positive,0.875
+0114_neg_0,8,5,dirt road fallen leaves,0,negative,0.625
+0114_pos_0,8,5,dirt road fallen leaves,0,positive,0.625
+0115_neg_0,8,7,gorgeous fireworks night sky,0,negative,0.875
+0115_pos_0,8,6,gorgeous fireworks night sky,0,positive,0.75
+0116_neg_0,8,5,ladybug on green leaf,8,negative,0.625
+0116_pos_0,8,6,ladybug on green leaf,8,positive,0.75
+0117_neg_0,8,3,colorful ribbons,0,negative,0.375
+0117_pos_0,8,5,colorful ribbons,0,positive,0.625
+0118_neg_0,8,6,group troops ride camels,0,negative,0.75
+0118_pos_0,8,7,group troops ride camels,0,positive,0.875
+0119_neg_0,8,7,marathon race,0,negative,0.875
+0119_pos_0,8,5,marathon race,0,positive,0.625
+0120_neg_0,8,6,bridesmaid group,7,negative,0.75
+0120_pos_0,8,5,bridesmaid group,7,positive,0.625
+0121_neg_0,8,3,stall selling vegetables and fruits,5,negative,0.375
+0121_pos_0,8,4,stall selling vegetables and fruits,5,positive,0.5
+0122_neg_0,8,2,satellite view earth,9,negative,0.25
+0122_pos_0,8,6,satellite view earth,9,positive,0.75
+0123_neg_0,8,6,leopard relaxing tree branch,0,negative,0.75
+0123_pos_0,8,5,leopard relaxing tree branch,0,positive,0.625
+0124_neg_0,8,5,adult elephants,0,negative,0.625
+0124_pos_0,8,7,adult elephants,0,positive,0.875
+0125_neg_0,8,6,barbed wires,0,negative,0.75
+0125_pos_0,8,5,barbed wires,0,positive,0.625
+0126_neg_0,8,7,riders riding horses,1,negative,0.875
+0126_pos_0,8,4,riders riding horses,1,positive,0.5
+0127_neg_0,8,7,spoon full food,0,negative,0.875
+0127_pos_0,8,7,spoon full food,0,positive,0.875
+0128_neg_0,8,7,t-shirt colorful patterns,0,negative,0.875
+0128_pos_0,8,5,t-shirt colorful patterns,0,positive,0.625
+0129_neg_0,8,4,fog forest,0,negative,0.5
+0129_pos_0,8,6,fog forest,0,positive,0.75
+0130_neg_0,8,6,civilian fishing boat in sea,0,negative,0.75
+0130_pos_0,8,6,civilian fishing boat in sea,0,positive,0.75
+0131_neg_0,8,5,refraction light glass cup,9,negative,0.625
+0131_pos_0,8,6,refraction light glass cup,9,positive,0.75
+0132_neg_0,8,7,old tree trunk,0,negative,0.875
+0132_pos_0,8,5,old tree trunk,0,positive,0.625
+0133_neg_0,8,4,white smoke black background,3,negative,0.5
+0133_pos_0,8,6,white smoke black background,3,positive,0.75
+0134_neg_0,8,4,colored gemstones,0,negative,0.5
+0134_pos_0,8,6,colored gemstones,0,positive,0.75
+0135_neg_0,8,6,people holding american flag,1,negative,0.75
+0135_pos_0,8,7,people holding american flag,1,positive,0.875
+0136_neg_0,8,5,spectator seats view stadium,0,negative,0.625
+0136_pos_0,8,2,spectator seats view stadium,0,positive,0.25
+0137_neg_0,8,7,runners running next fence,0,negative,0.875
+0137_pos_0,8,6,runners running next fence,0,positive,0.75
+0138_neg_0,8,8,woman in swimming pool,0,negative,1.0
+0138_pos_0,8,5,woman in swimming pool,0,positive,0.625
+0139_neg_0,8,4,lettuce growing ground,0,negative,0.5
+0139_pos_0,8,7,lettuce growing ground,0,positive,0.875
+0140_neg_0,8,7,lighthouse coast,8,negative,0.875
+0140_pos_0,8,5,lighthouse coast,8,positive,0.625
+0141_neg_0,8,5,diamond ring,3,negative,0.625
+0141_pos_0,8,7,diamond ring,3,positive,0.875
+0142_neg_0,8,7,mosaic floor,0,negative,0.875
+0142_pos_0,8,6,mosaic floor,0,positive,0.75
+0143_neg_0,8,5,small animals can fly,4,negative,0.625
+0143_pos_0,8,6,small animals can fly,4,positive,0.75
+0144_neg_0,8,5,interlocking necklaces,9,negative,0.625
+0144_pos_0,8,6,interlocking necklaces,9,positive,0.75
+0145_neg_0,8,6,pile bright red flowers,0,negative,0.75
+0145_pos_0,8,6,pile bright red flowers,0,positive,0.75
+0146_neg_0,8,7,girl holding doll,1,negative,0.875
+0146_pos_0,8,4,girl holding doll,1,positive,0.5
+0147_neg_0,8,4,person jumping air,0,negative,0.5
+0147_pos_0,8,6,person jumping air,0,positive,0.75
+0148_neg_0,8,5,people canoes in river,0,negative,0.625
+0148_pos_0,8,5,people canoes in river,0,positive,0.625
+0149_neg_0,8,5,ceramic bowl,3,negative,0.625
+0149_pos_0,8,6,ceramic bowl,3,positive,0.75
+0150_neg_0,8,7,car covered in snow,0,negative,0.875
+0150_pos_0,8,6,car covered in snow,0,positive,0.75
+0151_neg_0,8,6,monitor keyboard mouse on desk,0,negative,0.75
+0151_pos_0,8,7,monitor keyboard mouse on desk,0,positive,0.875
+0152_neg_0,8,6,aerial view city night,0,negative,0.75
+0152_pos_0,8,6,aerial view city night,0,positive,0.75
+0153_neg_0,8,4,man throwing fishing net river,0,negative,0.5
+0153_pos_0,8,5,man throwing fishing net river,0,positive,0.625
+0154_neg_0,8,5,animals multiple legs,0,negative,0.625
+0154_pos_0,8,6,animals multiple legs,0,positive,0.75
+0155_neg_0,8,7,aerial view mountains range,0,negative,0.875
+0155_pos_0,8,5,aerial view mountains range,0,positive,0.625
+0156_neg_0,8,6,wooden ladders,0,negative,0.75
+0156_pos_0,8,5,wooden ladders,0,positive,0.625
+0157_neg_0,8,6,strawberry picking garden,0,negative,0.75
+0157_pos_0,8,7,strawberry picking garden,0,positive,0.875
+0158_neg_0,8,5,city bridge over river night,0,negative,0.625
+0158_pos_0,8,8,city bridge over river night,0,positive,1.0
+0159_neg_0,8,5,old wooden house countryside,3,negative,0.625
+0159_pos_0,8,7,old wooden house countryside,3,positive,0.875
+0160_neg_0,8,7,variety outdoor equipments,0,negative,0.875
+0160_pos_0,8,5,variety outdoor equipments,0,positive,0.625
+0161_neg_0,8,5,students wearing uniforms graduation ceremony,0,negative,0.625
+0161_pos_0,8,6,students wearing uniforms graduation ceremony,0,positive,0.75
+0162_neg_0,8,6,closeup picture white flowers,0,negative,0.75
+0162_pos_0,8,5,closeup picture white flowers,0,positive,0.625
+0163_neg_0,8,6,people flying kites,0,negative,0.75
+0163_pos_0,8,7,people flying kites,0,positive,0.875
+0164_neg_0,8,7,squirrel foraging on lawn,0,negative,0.875
+0164_pos_0,8,5,squirrel foraging on lawn,0,positive,0.625
+0165_neg_0,8,6,lighthouse by sea,0,negative,0.75
+0165_pos_0,8,6,lighthouse by sea,0,positive,0.75
+0166_neg_0,8,6,a newborn baby,0,negative,0.75
+0166_pos_0,8,8,a newborn baby,0,positive,1.0
+0167_neg_0,8,6,herd buffalo grazing meadow,0,negative,0.75
+0167_pos_0,8,6,herd buffalo grazing meadow,0,positive,0.75
+0168_neg_0,8,6,swimming pool surrounded palm trees,0,negative,0.75
+0168_pos_0,8,5,swimming pool surrounded palm trees,0,positive,0.625
+0169_neg_0,8,5,closeup goats,0,negative,0.625
+0169_pos_0,8,7,closeup goats,0,positive,0.875
+0170_neg_0,8,4,old dilapidated wooden window,0,negative,0.5
+0170_pos_0,8,5,old dilapidated wooden window,0,positive,0.625
+0171_neg_0,8,7,models wearing lingerie runway,0,negative,0.875
+0171_pos_0,8,7,models wearing lingerie runway,0,positive,0.875
+0172_neg_0,8,5,hummingbird long beak,0,negative,0.625
+0172_pos_0,8,4,hummingbird long beak,0,positive,0.5
+0173_neg_0,8,6,white tent,0,negative,0.75
+0173_pos_0,8,4,white tent,0,positive,0.5
+0174_neg_0,8,3,open refrigerator kitchen,0,negative,0.375
+0174_pos_0,8,7,open refrigerator kitchen,0,positive,0.875
+0175_neg_0,8,4,grey and white animals,5,negative,0.5
+0175_pos_0,8,6,grey and white animals,5,positive,0.75
+0176_neg_0,8,4,grasshopper on green plant,0,negative,0.5
+0176_pos_0,8,5,grasshopper on green plant,0,positive,0.625
+0177_neg_0,8,4,sketch drawing,0,negative,0.5
+0177_pos_0,8,2,sketch drawing,0,positive,0.25
+0178_neg_0,8,4,closeup red fruits,3,negative,0.5
+0178_pos_0,8,6,closeup red fruits,3,positive,0.75
+0179_neg_0,8,5,large tortoises on ground,0,negative,0.625
+0180_neg_0,8,7,stack balanced stones,0,negative,0.875
+0180_pos_0,8,7,stack balanced stones,0,positive,0.875
+0181_neg_0,8,7,ramshackle road,0,negative,0.875
+0181_pos_0,8,7,ramshackle road,0,positive,0.875
+0182_neg_0,8,2,people dress uniform street,0,negative,0.25
+0182_pos_0,8,6,people dress uniform street,0,positive,0.75
+0183_neg_0,8,7,people playing shallow water,9,negative,0.875
+0183_pos_0,8,4,people playing shallow water,9,positive,0.5
+0184_neg_0,8,6,fire burning forest,0,negative,0.75
+0184_pos_0,8,4,fire burning forest,0,positive,0.5
+0185_neg_0,8,7,soldiers battlefield,0,negative,0.875
+0185_pos_0,8,4,soldiers battlefield,0,positive,0.5
+0186_neg_0,8,7,toy dolls,0,negative,0.875
+0186_pos_0,7,4,toy dolls,0,positive,0.5714285714285714
+0187_neg_0,8,7,pile yellow and green peppers,5,negative,0.875
+0187_pos_0,8,5,pile yellow and green peppers,5,positive,0.625
+0188_neg_0,8,5,water droplets,0,negative,0.625
+0188_pos_0,8,5,water droplets,0,positive,0.625
+0189_neg_0,8,5,close-up view pink tulips,0,negative,0.625
+0189_pos_0,8,4,close-up view pink tulips,0,positive,0.5
+0190_neg_0,8,8,various kinds necklaces,0,negative,1.0
+0190_pos_0,8,6,various kinds necklaces,0,positive,0.75
+0191_neg_0,8,5,people crowded together,0,negative,0.625
+0191_pos_0,8,5,people crowded together,0,positive,0.625
+0192_neg_0,8,7,surfaces water droplets attached,0,negative,0.875
+0192_pos_0,8,6,surfaces water droplets attached,0,positive,0.75
+0193_neg_0,8,4,farmers working rice fields,0,negative,0.5
+0193_pos_0,8,6,farmers working rice fields,0,positive,0.75
+0194_neg_0,8,4,old fashioned computers,9,negative,0.5
+0194_pos_0,8,6,old fashioned computers,9,positive,0.75
+0195_neg_0,8,8,wooden fence,0,negative,1.0
+0195_pos_0,8,5,wooden fence,0,positive,0.625
+0196_neg_0,8,6,stone sculpture lion,0,negative,0.75
+0196_pos_0,8,6,stone sculpture lion,0,positive,0.75
+0197_neg_0,8,6,round pattern on floor,3,negative,0.75
+0197_pos_0,8,5,round pattern on floor,3,positive,0.625
+0198_neg_0,8,6,abandoned castle,0,negative,0.75
+0198_pos_0,8,5,abandoned castle,0,positive,0.625
+0199_neg_0,8,6,monks meditating,0,negative,0.75
+0199_pos_0,8,5,monks meditating,0,positive,0.625
+0200_neg_0,8,5,closeup crocodile head,0,negative,0.625
+0200_pos_0,8,6,closeup crocodile head,0,positive,0.75
+0201_neg_0,8,5,black white comic strips,0,negative,0.625
+0201_pos_0,8,5,black white comic strips,0,positive,0.625
+0202_neg_0,8,5,satellite image lake,0,negative,0.625
+0202_pos_0,8,5,satellite image lake,0,positive,0.625
+0203_neg_0,8,7,various kinds desserts,0,negative,0.875
+0203_pos_0,8,4,various kinds desserts,0,positive,0.5
+0204_neg_0,8,6,supermarket shelves filled food,2,negative,0.75
+0204_pos_0,8,6,supermarket shelves filled food,2,positive,0.75
+0205_neg_0,8,8,seagull standing rock sea,0,negative,1.0
+0205_pos_0,8,6,seagull standing rock sea,0,positive,0.75
+0206_neg_0,8,6,paper umbrellas,3,negative,0.75
+0206_pos_0,8,7,paper umbrellas,3,positive,0.875
+0207_neg_0,8,7,red fire flickering black background,0,negative,0.875
+0207_pos_0,8,5,red fire flickering black background,0,positive,0.625
+0208_neg_0,8,6,variety colorful lollipops,0,negative,0.75
+0208_pos_0,8,4,variety colorful lollipops,0,positive,0.5
+0209_neg_0,8,5,bowl chocolate pudding,2,negative,0.625
+0209_pos_0,8,6,bowl chocolate pudding,2,positive,0.75
+0210_neg_0,8,5,little raccoon climbing tree,0,negative,0.625
+0210_pos_0,8,6,little raccoon climbing tree,0,positive,0.75
+0211_neg_0,8,6,kids play outdoors,0,negative,0.75
+0211_pos_0,8,6,kids play outdoors,0,positive,0.75
+0212_neg_0,8,6,digital thermometer,0,negative,0.75
+0212_pos_0,8,5,digital thermometer,0,positive,0.625
+0213_neg_0,8,4,checkerboard pattern fabrics,0,negative,0.5
+0213_pos_0,8,4,checkerboard pattern fabrics,0,positive,0.5
+0214_neg_0,8,7,pair eyebrow pencils,0,negative,0.875
+0214_pos_0,8,6,pair eyebrow pencils,0,positive,0.75
+0215_neg_0,8,3,dog playing in snow,0,negative,0.375
+0215_pos_0,8,5,dog playing in snow,0,positive,0.625
+0216_neg_0,8,7,crowd cheering,0,negative,0.875
+0216_pos_0,8,5,crowd cheering,0,positive,0.625
+0217_neg_0,8,6,sport utility vehicle on display,0,negative,0.75
+0217_pos_0,8,4,sport utility vehicle on display,0,positive,0.5
+0218_neg_0,8,3,light-and-shadow diagram,0,negative,0.375
+0218_pos_0,8,7,light-and-shadow diagram,0,positive,0.875
+0219_neg_0,8,7,cat different colored eyes closeup,0,negative,0.875
+0219_pos_0,8,4,cat different colored eyes closeup,0,positive,0.5
+0220_neg_0,8,6,sketch house,0,negative,0.75
+0220_pos_0,8,4,sketch house,0,positive,0.5
+0221_neg_0,8,5,frozen heart shaped ice cubes,0,negative,0.625
+0221_pos_0,8,4,frozen heart shaped ice cubes,0,positive,0.5
+0222_neg_0,8,5,bunch roses,0,negative,0.625
+0222_pos_0,8,3,bunch roses,0,positive,0.375
+0223_neg_0,8,7,animal dolls,0,negative,0.875
+0223_pos_0,8,4,animal dolls,0,positive,0.5
+0224_neg_0,8,4,close up dog nose,0,negative,0.5
+0224_pos_0,8,5,close up dog nose,0,positive,0.625
+0225_neg_0,8,4,tomato dishes,2,negative,0.5
+0225_pos_0,8,5,tomato dishes,2,positive,0.625
+0226_neg_0,8,7,forklift working,0,negative,0.875
+0226_pos_0,8,6,forklift working,0,positive,0.75
+0227_neg_0,8,7,cup drinks,2,negative,0.875
+0227_pos_0,8,6,cup drinks,2,positive,0.75
+0228_neg_0,8,7,wooden cross,3,negative,0.875
+0228_pos_0,8,4,wooden cross,3,positive,0.5
+0229_neg_0,8,8,flying in air,4,negative,1.0
+0229_pos_0,8,7,flying in air,4,positive,0.875
+0230_neg_0,8,6,mother mallard duck babies pond,0,negative,0.75
+0230_pos_0,8,5,mother mallard duck babies pond,0,positive,0.625
+0231_neg_0,8,6,map north america,6,negative,0.75
+0231_pos_0,8,7,map north america,6,positive,0.875
+0232_neg_0,8,6,clear reflection lake,9,negative,0.75
+0232_pos_0,8,3,clear reflection lake,9,positive,0.375
+0233_neg_0,7,5,baby bubbles,1,negative,0.7142857142857143
+0233_pos_0,7,4,baby bubbles,1,positive,0.5714285714285714
+0234_neg_0,8,4,tall obelisk park sky,0,negative,0.5
+0234_pos_0,8,8,tall obelisk park sky,0,positive,1.0
+0235_neg_0,8,7,stone sculpture,3,negative,0.875
+0235_pos_0,8,6,stone sculpture,3,positive,0.75
+0236_neg_0,8,6,plaid fabric,3,negative,0.75
+0236_pos_0,8,2,plaid fabric,3,positive,0.25
+0237_neg_0,8,5,people shopping street,0,negative,0.625
+0237_pos_0,8,4,people shopping street,0,positive,0.5
+0238_neg_0,8,6,turtle swimming in water,4,negative,0.75
+0238_pos_0,8,4,turtle swimming in water,4,positive,0.5
+0239_neg_0,8,6,farmer wearing hat,1,negative,0.75
+0239_pos_0,8,7,farmer wearing hat,1,positive,0.875
+0240_neg_0,8,6,black crows,0,negative,0.75
+0240_pos_0,8,6,black crows,0,positive,0.75
+0241_neg_0,7,4,painting spooky human head,0,negative,0.5714285714285714
+0241_pos_0,7,3,painting spooky human head,0,positive,0.42857142857142855
+0242_neg_0,7,6,lego model car,0,negative,0.8571428571428571
+0242_pos_0,7,4,lego model car,0,positive,0.5714285714285714
+0243_neg_0,7,5,waterfall forest,0,negative,0.7142857142857143
+0243_pos_0,7,3,waterfall forest,0,positive,0.42857142857142855
+0244_neg_0,7,7,cable car climbing mountain,0,negative,1.0
+0244_pos_0,7,5,cable car climbing mountain,0,positive,0.7142857142857143
+0245_neg_0,7,4,girl hair seen backview,0,negative,0.5714285714285714
+0245_pos_0,7,5,girl hair seen backview,0,positive,0.7142857142857143
+0246_neg_0,7,6,clear bottom lake transmits sunlight,9,negative,0.8571428571428571
+0246_pos_0,7,5,clear bottom lake transmits sunlight,9,positive,0.7142857142857143
+0247_neg_0,7,6,small river filled reeds,0,negative,0.8571428571428571
+0247_pos_0,7,1,small river filled reeds,0,positive,0.14285714285714285
+0248_neg_0,7,5,map city states United States,6,negative,0.7142857142857143
+0248_pos_0,7,3,map city states United States,6,positive,0.42857142857142855
+0249_neg_0,7,7,dad takes care kids home,0,negative,1.0
+0249_pos_0,7,5,dad takes care kids home,0,positive,0.7142857142857143
+0250_neg_0,1,True,man performing skateboarding show,1,negative,1.0
+0250_pos_0,7,4,man performing skateboarding show,1,positive,0.5714285714285714
+0251_neg_0,1,True,lizard sunbathing on rock,4,negative,1.0
+0251_pos_0,1,True,lizard sunbathing on rock,4,positive,1.0

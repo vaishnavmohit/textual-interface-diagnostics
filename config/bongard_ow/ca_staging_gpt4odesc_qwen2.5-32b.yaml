@@ -1,0 +1,30 @@
+# Staging control, reasoner qwen2.5-32b — extends the sign-flip evidence.
+#
+# Same frozen GPT-4o descriptions and same 499 Bongard-OW instances as every
+# other reasoner in this control; only the reasoner changes. Two reasoners
+# already show OPPOSITE-SIGNED staging terms (Qwen2.5-14B -3.41, Phi-4 +4.81),
+# so the question is no longer whether staging is free but how it varies. Five
+# reasoners across four families make that a measured distribution rather than
+# a pair of counterexamples.
+#
+#   python main.py --config config/bongard_ow/ca_staging_gpt4odesc_qwen2.5-32b.yaml
+model:
+  module: "pri.pipeline"
+  function: "run"
+  parameters:
+    reasoner_model: "qwen2.5:32b"
+    dataset: "bongard_ow"
+    json_path: "${DATA_DIR}/bongard_ow/rearranged_bongard.json"
+    image_dir: "${DATA_DIR}/bongard_ow"
+    perception_model: "gpt-4o-2024-08-06"     # same artifact for every reasoner
+    context: "ca"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_ow_staging"
+    split_name: "bongard_ow"
+    num_samples: 500
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 2048
+    num_ctx: 16384
+    think: false

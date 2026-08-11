@@ -1,0 +1,5 @@
+condition,n,median_coverage,acc_rule_covers,n_covers,acc_rule_misses,n_misses,gap
+CA / gpt-4o (self),500,0.33,94.5,201,91.6,299,2.9
+DRL / gpt-4o,500,0.33,91.2,171,86.3,329,4.9
+DVRL / gpt-4o,495,0.33,89.5,162,76.6,333,12.9
+CA / gemini (self),500,0.33,95.0,222,92.4,278,2.6

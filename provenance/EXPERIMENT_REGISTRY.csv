@@ -1,0 +1,189 @@
+benchmark,output_root,experiment_dir,split,paradigm,descriptions_from,reasoner_model,ablation,n_rows,n_valid,invalid_pct,accuracy_valid_pct,analysis_decision,decision_reason,source_sha256
+bongard_hoi,output_bongard_hoi,sosa/ca/gemini-3-flash-preview,sosa,CA,self,gemini-3-flash-preview,,500,500,0.0,85.4,include,,b0cfcc981eaba770
+bongard_hoi,output_bongard_hoi,sosa/ca/gpt-5.1,sosa,CA,self,gpt-5.1,GPT-5.1,6,6,0.0,83.33,exclude,empty/crashed run (<=20 rows),2727e7d8361e57d7
+bongard_hoi,output_bongard_hoi,sosa/single_gemini_2_flash_exp,sosa,CA,self,gemini-2.0-flash-exp,,100,100,0.0,77.0,include,,4319e1e7f04ce26d
+bongard_hoi,output_bongard_hoi,sosa/single_gpt4o,sosa,CA,self,gpt-4o-2024-08-06,,100,100,0.0,83.0,include,,64d1e28edc07efe2
+bongard_hoi,output_bongard_hoi,sosa/single_pixtral-12b-2409,sosa,CA,self,pixtral-12b-2409,,100,100,0.0,65.0,include,,2c0e54d3eab9534b
+bongard_hoi,output_bongard_hoi,soua/ca/gemini-3-flash-preview,soua,CA,self,gemini-3-flash-preview,,63,63,0.0,73.02,include,,06b18bc5c82399aa
+bongard_hoi,output_bongard_hoi,soua/ca/gpt-5.1,soua,CA,self,gpt-5.1,GPT-5.1,500,500,0.0,80.4,exploratory-only,recent-model demo; barred from common-set tables,a6bc7189e6730c76
+bongard_hoi,output_bongard_hoi,soua/single_gemini_2_flash_exp,soua,CA,self,gemini-2.0-flash-exp,,100,100,0.0,74.0,include,,1032ec0b48567c01
+bongard_hoi,output_bongard_hoi,soua/single_gpt4o,soua,CA,self,gpt-4o-2024-08-06,,100,100,0.0,83.0,include,,9b18e5715c1b23d1
+bongard_hoi,output_bongard_hoi,soua/single_pixtral-12b-2409,soua,CA,self,pixtral-12b-2409,,100,100,0.0,76.0,include,,29728e4b07e4a064
+bongard_hoi,output_bongard_hoi,uosa/ca/gemini-3-flash-preview,uosa,CA,self,gemini-3-flash-preview,,27,27,0.0,70.37,include,,c5832dfeee5fad1e
+bongard_hoi,output_bongard_hoi,uosa/ca/gpt-5.1,uosa,CA,self,gpt-5.1,GPT-5.1,500,500,0.0,73.6,exploratory-only,recent-model demo; barred from common-set tables,6641a9a50624f8c6
+bongard_hoi,output_bongard_hoi,uosa/single_gemini_2_flash_exp,uosa,CA,self,gemini-2.0-flash-exp,,100,100,0.0,70.0,include,,59e9b5d845b062e4
+bongard_hoi,output_bongard_hoi,uosa/single_gpt4o,uosa,CA,self,gpt-4o-2024-08-06,,100,100,0.0,66.0,include,,1668a028998ad506
+bongard_hoi,output_bongard_hoi_rerun,uosa/single_gpt4o_65,uosa,CA,self,gpt-4o-2024-08-06,rerun,100,100,0.0,65.0,exclude,re-run not used in the paper; superseded by output_bongard_hoi,d5034a2d7cb3aa0f
+bongard_hoi,output_bongard_hoi,uosa/single_pixtral-12b-2409,uosa,CA,self,pixtral-12b-2409,,100,100,0.0,55.0,include,,f1c30e747f72b645
+bongard_hoi,output_bongard_hoi,uoua/ca/gemini-3-flash-preview,uoua,CA,self,gemini-3-flash-preview,,46,46,0.0,80.43,include,,57b487415683c563
+bongard_hoi,output_bongard_hoi,uoua/ca/gpt-5.1,uoua,CA,self,gpt-5.1,GPT-5.1,500,500,0.0,83.8,exploratory-only,recent-model demo; barred from common-set tables,b83d9b2a31af6b6b
+bongard_hoi,output_bongard_hoi,uoua/single_gemini_2_flash_exp,uoua,CA,self,gemini-2.0-flash-exp,,100,100,0.0,77.0,include,,6a92688735440ff2
+bongard_hoi,output_bongard_hoi_rerun,uoua/single_gemini_2_flash_exp_75,uoua,CA,self,gemini-2.0-flash-exp,rerun,100,100,0.0,75.0,exclude,re-run not used in the paper; superseded by output_bongard_hoi,76fcdb4cafd2f52a
+bongard_hoi,output_bongard_hoi,uoua/single_gpt4o,uoua,CA,self,gpt-4o-2024-08-06,,100,100,0.0,77.0,include,,62e3e7b4cea3af8e
+bongard_hoi,output_bongard_hoi,uoua/single_pixtral-12b-2409,uoua,CA,self,pixtral-12b-2409,,100,100,0.0,57.0,include,,bed1def85a4f2460
+bongard_hoi,output_bongard_hoi,sosa/drl/gemini-3-flash-preview,sosa,DRL,n/a (end-to-end),gemini-3-flash-preview,,376,376,0.0,88.03,include,,7b731e318e398aff
+bongard_hoi,output_bongard_hoi,sosa/drl/gpt-5.1,sosa,DRL,n/a (end-to-end),gpt-5.1,GPT-5.1,500,500,0.0,80.4,exploratory-only,recent-model demo; barred from common-set tables,fc3e04deb4eeb26f
+bongard_hoi,output_bongard_hoi,sosa/multi_gemini_2_flash_exp,sosa,DRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,100,0.0,63.0,include,,fc7b56f035abdd7c
+bongard_hoi,output_bongard_hoi,sosa/multi_gpt4o,sosa,DRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,73.0,include,,33741f28d1c1ec96
+bongard_hoi,output_bongard_hoi_rerun,sosa/multi_gpt4o_73,sosa,DRL,n/a (end-to-end),gpt-4o-2024-08-06,rerun,100,100,0.0,73.0,exclude,re-run not used in the paper; superseded by output_bongard_hoi,a246f39135ed7361
+bongard_hoi,output_bongard_hoi,soua/drl/gemini-3-flash-preview,soua,DRL,n/a (end-to-end),gemini-3-flash-preview,,300,300,0.0,85.67,include,,f2b54aeff6c309f8
+bongard_hoi,output_bongard_hoi,soua/drl/gpt-5.1,soua,DRL,n/a (end-to-end),gpt-5.1,GPT-5.1,500,500,0.0,83.2,exploratory-only,recent-model demo; barred from common-set tables,05c5004fff84bf17
+bongard_hoi,output_bongard_hoi,soua/multi_gemini_2_flash_exp,soua,DRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,100,0.0,62.0,include,,9dafb922d14371fe
+bongard_hoi,output_bongard_hoi,soua/multi_gpt4o,soua,DRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,77.0,include,,71c8d59a986305ef
+bongard_hoi,output_bongard_hoi,uosa/drl/gemini-3-flash-preview,uosa,DRL,n/a (end-to-end),gemini-3-flash-preview,,37,37,0.0,78.38,include,,0e480b5ce5282644
+bongard_hoi,output_bongard_hoi,uosa/drl/gpt-5.1,uosa,DRL,n/a (end-to-end),gpt-5.1,GPT-5.1,500,500,0.0,76.0,exploratory-only,recent-model demo; barred from common-set tables,661d2c49edc6dfdd
+bongard_hoi,output_bongard_hoi,uosa/multi_gemini_2_flash_exp,uosa,DRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,100,0.0,55.0,include,,2b2e0dcd8e12dbc3
+bongard_hoi,output_bongard_hoi,uosa/multi_gpt4o,uosa,DRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,64.0,include,,1f4ab300d01b5561
+bongard_hoi,output_bongard_hoi,uoua/drl/gemini-3-flash-preview,uoua,DRL,n/a (end-to-end),gemini-3-flash-preview,,23,23,0.0,86.96,include,,d7b35350d585a2c1
+bongard_hoi,output_bongard_hoi,uoua/drl/gpt-5.1,uoua,DRL,n/a (end-to-end),gpt-5.1,GPT-5.1,500,500,0.0,83.6,exploratory-only,recent-model demo; barred from common-set tables,ad590c401904adf4
+bongard_hoi,output_bongard_hoi_rerun,uoua/multi_gemini-25-pro-exp-03-25,uoua,DRL,n/a (end-to-end),gemini-2.5-pro-exp-03-25,rerun,2,2,0.0,100.0,exclude,empty/crashed run (<=20 rows),a25b8b0ed9f7a1dd
+bongard_hoi,output_bongard_hoi,uoua/multi_gemini_2_flash_exp,uoua,DRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,100,0.0,65.0,include,,f4b57b1fae8e97d6
+bongard_hoi,output_bongard_hoi,uoua/multi_gemini_2_flash_exp_8150,uoua,DRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,100,0.0,63.0,exclude,duplicate of the unsuffixed run; paper used that one,40a8cbdd2825b4ec
+bongard_hoi,output_bongard_hoi,uoua/multi_gpt4o,uoua,DRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,73.0,include,,bdeb369730f04b2f
+bongard_hoi,output_bongard_hoi,sosa/dvrl/gemini-3-flash-preview,sosa,DVRL,n/a (end-to-end),gemini-3-flash-preview,,2,2,0.0,100.0,exclude,empty/crashed run (<=20 rows),51e2df16e8b929b8
+bongard_hoi,output_bongard_hoi,sosa/multi_test_gemini_2_flash_exp,sosa,DVRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,96,4.0,52.08,include-valid-rows-only,"model reported it could not receive/process the images; a condition limitation, not a harness fault",c13defcb9d06de9e
+bongard_hoi,output_bongard_hoi,sosa/multi_test_gpt4o,sosa,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,68.0,include,,a2eee27940ea1aa8
+bongard_hoi,output_bongard_hoi_rerun,sosa/multi_test_gpt4o,sosa,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,rerun,100,100,0.0,73.0,exclude,re-run not used in the paper; superseded by output_bongard_hoi,c6952790c296fabb
+bongard_hoi,output_bongard_hoi,soua/dvrl/gemini-3-flash-preview,soua,DVRL,n/a (end-to-end),gemini-3-flash-preview,,9,9,0.0,88.89,exclude,empty/crashed run (<=20 rows),c8b40c64bb712ae4
+bongard_hoi,output_bongard_hoi,soua/multi_test_gemini_2_flash_exp,soua,DVRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,97,3.0,55.67,include-valid-rows-only,"model reported it could not receive/process the images; a condition limitation, not a harness fault",abaedb726c7e4cb5
+bongard_hoi,output_bongard_hoi,soua/multi_test_gpt4o,soua,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,75.0,include,,959a45d3fdf9eb67
+bongard_hoi,output_bongard_hoi,uosa/dvrl/gemini-3-flash-preview,uosa,DVRL,n/a (end-to-end),gemini-3-flash-preview,,6,6,0.0,83.33,exclude,empty/crashed run (<=20 rows),d1b3f5940ed1f25e
+bongard_hoi,output_bongard_hoi,uosa/multi_test_gemini_2_flash_exp,uosa,DVRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,97,3.0,50.52,include-valid-rows-only,"model reported it could not receive/process the images; a condition limitation, not a harness fault",ca5179fe192f4b9d
+bongard_hoi,output_bongard_hoi,uosa/multi_test_gpt4o,uosa,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,61.0,include,,c881a856211ebe08
+bongard_hoi,output_bongard_hoi,uoua/dvrl/gemini-3-flash-preview,uoua,DVRL,n/a (end-to-end),gemini-3-flash-preview,,2,2,0.0,100.0,exclude,empty/crashed run (<=20 rows),5b99290a78c76510
+bongard_hoi,output_bongard_hoi,uoua/multi_test_gemini_2_flash_exp,uoua,DVRL,n/a (end-to-end),gemini-2.0-flash-exp,,100,91,9.0,54.95,include-valid-rows-only,"model reported it could not receive/process the images; a condition limitation, not a harness fault",bccd34aec4afd3c1
+bongard_hoi,output_bongard_hoi,uoua/multi_test_gpt4o,uoua,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,,100,100,0.0,70.0,include,,6023511a5ea7aa14
+bongard_ow,output,Bongard_OpenWorld_single_comp_eval_mistral,,CA,gpt-4o,pixtral-12b-2409,,499,499,0.0,87.98,include,,0cb416b09869450f
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_llm_67b,,CA,gpt-4o,deepseek-llm:67b,,499,499,0.0,52.3,include,,f945484bc0efbc03
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_llm_7b,,CA,gpt-4o,deepseek-llm,,499,499,0.0,47.29,include,,b4c7049c957f2cc8
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_r1_14b,,CA,gpt-4o,deepseek-r1:14b,,499,499,0.0,87.98,include,,ed94bed6273738fc
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_r1_32b,,CA,gpt-4o,deepseek-r1:32b,,499,499,0.0,91.98,include,,5b53d3ece9499075
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_r1_70b,,CA,gpt-4o,deepseek-r1:70b,,499,499,0.0,92.99,include,,472e0cf33dc902d9
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_r1_8b,,CA,gpt-4o,deepseek-r1:8b,,499,499,0.0,79.36,include,,514bde3531e5891f
+bongard_ow,output,bongard_ow_single_comp_eval_deepseeek_v2_16b,,CA,gpt-4o,deepseek-v2,,499,499,0.0,65.53,include,,da4f5264c8c914c7
+bongard_ow,output,bongard_ow_single_comp_eval_gemma2_27b,,CA,gpt-4o,gemma2:27b,,499,499,0.0,88.98,include,,cbf7c514d019f6ec
+bongard_ow,output,bongard_ow_single_comp_eval_gemma2_9b,,CA,gpt-4o,gemma2,,499,499,0.0,86.37,include,,b183d10bc9ac2814
+bongard_ow,output,bongard_ow_single_comp_eval_gemma3_12b,,CA,gpt-4o,gemma3:12b,,499,499,0.0,87.58,include,,a4adb6c13ee5ee86
+bongard_ow,output,bongard_ow_single_comp_eval_gemma3_1b,,CA,gpt-4o,gemma3:1b,,499,499,0.0,54.71,include,,4437e9a329762e53
+bongard_ow,output,bongard_ow_single_comp_eval_gemma3_27b,,CA,gpt-4o,gemma3:27b,,499,499,0.0,89.78,include,,ce86591919df1a73
+bongard_ow,output,bongard_ow_single_comp_eval_gemma3_4b,,CA,gpt-4o,gemma3:4b,,499,499,0.0,77.35,include,,87e842f5eab67c6f
+bongard_ow,output,bongard_ow_single_comp_eval_gemma_7b,,CA,gpt-4o,gemma:7b,,499,499,0.0,66.13,include,,d0de5432587d2431
+bongard_ow,output,bongard_ow_single_comp_eval_llama11b,,CA,gpt-4o,llama3.2-vision11b,,499,499,0.0,84.17,include,,c4b2598362f7a97a
+bongard_ow,output,bongard_ow_single_comp_eval_llama2_13b,,CA,gpt-4o,llama2:13b,,499,499,0.0,50.1,include,,7042e20087108bde
+bongard_ow,output,bongard_ow_single_comp_eval_llama2_70b,,CA,gpt-4o,llama2:70b,,499,499,0.0,48.5,include,,8b90f522e03fc52f
+bongard_ow,output,bongard_ow_single_comp_eval_llama2_7b,,CA,gpt-4o,llama2,,499,499,0.0,51.5,include,,dd5aa3f7059c889a
+bongard_ow,output,bongard_ow_single_comp_eval_llama31_70b,,CA,gpt-4o,llama3.1:70b,,499,499,0.0,91.98,include,,5ba1adbebc182194
+bongard_ow,output,bongard_ow_single_comp_eval_llama31_8b,,CA,gpt-4o,llama3.1:8b,,499,499,0.0,84.57,include,,13584bf4cb349a04
+bongard_ow,output,bongard_ow_single_comp_eval_llama32_3b,,CA,gpt-4o,llama3.2,,499,499,0.0,59.32,include,,f42790db9977152e
+bongard_ow,output,bongard_ow_single_comp_eval_llama33_70b,,CA,gpt-4o,llama3.3,,499,499,0.0,92.79,include,,a2c8d64ac117fd4a
+bongard_ow,output,bongard_ow_single_comp_eval_llama3_70b,,CA,gpt-4o,llama3:70b,,499,499,0.0,83.57,include,,bc2ba7dd22f5d758
+bongard_ow,output,bongard_ow_single_comp_eval_llama3_8b,,CA,gpt-4o,llama3,,499,499,0.0,72.14,include,,a82a5e0ab6a38042
+bongard_ow,output,bongard_ow_single_comp_eval_llama8b_delete,,CA,gpt-4o,llama3.2-vision8b,,499,499,0.0,68.34,exclude,author decision: skip,699450b3689a6236
+bongard_ow,output,bongard_ow_single_comp_eval_llama90b,,CA,gpt-4o,llama3.2-vision90b,,499,499,0.0,90.98,include,,f027dcb00ed9a1c3
+bongard_ow,output,bongard_ow_single_comp_eval_llava13b,,CA,gpt-4o,llava:13b,,499,499,0.0,52.1,include,,7805f06dd5461b8b
+bongard_ow,output,bongard_ow_single_comp_eval_llava13b_4096,,CA,gpt-4o,llava:13b,ctx-4096,267,267,0.0,52.43,include,,7799b64f37fd599e
+bongard_ow,output,bongard_ow_single_comp_eval_llava34b,,CA,gpt-4o,llava:34b,,499,499,0.0,81.56,include,,4cb6c857795cf229
+bongard_ow,output,bongard_ow_single_comp_eval_llava7b_8196,,CA,gpt-4o,llava:7b,ctx-8196,499,499,0.0,80.56,include,,6a36189e938dbecb
+bongard_ow,output,bongard_ow_single_comp_eval_llava7b_not_working,,CA,gpt-4o,llava:7b,,206,206,0.0,61.65,exclude,run self-reports failure,3eaca17d964b1aba
+bongard_ow,output,bongard_ow_single_comp_eval_llava_llama3,,CA,gpt-4o,llava-llama3,,499,499,0.0,49.7,include,,14567f1a8fe3daba
+bongard_ow,output,bongard_ow_single_comp_eval_mistral_7b,,CA,gpt-4o,mistral,,499,499,0.0,76.55,include,,2dbbde8594821913
+bongard_ow,output,bongard_ow_single_comp_eval_phi3_14b,,CA,gpt-4o,phi3:14b,,499,499,0.0,86.97,include,,7dd86dc21937403d
+bongard_ow,output,bongard_ow_single_comp_eval_phi4_14b,,CA,gpt-4o,phi4,,499,499,0.0,91.98,include,,e3e1c042322e2ab5
+bongard_ow,output,bongard_ow_single_comp_eval_qwen2.5vl_32b,,CA,gpt-4o,qwen2.5vl:32b,,499,499,0.0,92.79,include,,895640b073adaa33
+bongard_ow,output,bongard_ow_single_comp_eval_qwen2.5vl_3b,,CA,gpt-4o,qwen2.5vl:3b,,499,499,0.0,86.77,include,,a5ab3501c0f562d3
+bongard_ow,output,bongard_ow_single_comp_eval_qwen2.5vl_7b,,CA,gpt-4o,qwen2.5vl:7b,,499,499,0.0,83.57,include,,292aa155e18a59f0
+bongard_ow,output,bongard_ow_single_comp_eval_qwen25_14b,,CA,gpt-4o,qwen2.5:14b,,499,499,0.0,92.99,include,,4f539aacf89b774c
+bongard_ow,output,bongard_ow_single_comp_eval_qwen25_32b,,CA,gpt-4o,qwen2.5:32b,,499,499,0.0,92.79,include,,7f1e170cacde154d
+bongard_ow,output,bongard_ow_single_comp_eval_qwen25_72b,,CA,gpt-4o,qwen2.5:72b,,499,499,0.0,92.59,include,,540410b8ccf784da
+bongard_ow,output,bongard_ow_single_comp_eval_qwen25_7b,,CA,gpt-4o,qwen2.5:7b,,499,499,0.0,90.38,include,,a65dba5a1a98b367
+bongard_ow,output,bongard_ow_single_comp_eval_qwen2_72b,,CA,gpt-4o,qwen2:72b,,499,499,0.0,90.38,include,,1163dd7cddc5fc4b
+bongard_ow,output,bongard_ow_single_comp_eval_qwen2_7b,,CA,gpt-4o,qwen2:7b,,499,499,0.0,72.14,include,,dc7c30a55cc46a96
+bongard_ow,output,bongard_ow_single_comp_eval_qwen_14b,,CA,gpt-4o,qwen:14b,,18,18,0.0,44.44,exclude,empty/crashed run (<=20 rows),9c88585f9659f241
+bongard_ow,output,bongard_ow_single_comp_eval_qwen_32b,,CA,gpt-4o,qwen:32b,,499,499,0.0,89.18,include,,3ad1ec8acb5261d7
+bongard_ow,output,bongard_ow_single_comp_eval_qwen_72b,,CA,gpt-4o,qwen:72b,,4,4,0.0,50.0,exclude,empty/crashed run (<=20 rows),ce5412aacdc9c359
+bongard_ow,output,bongard_ow_single_comp_eval_qwen_7b,,CA,gpt-4o,qwen:7b,,11,11,0.0,36.36,exclude,empty/crashed run (<=20 rows),48c8f1e9d1d10e7c
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_deepseeek_r1_14b,,CA,pixtral,deepseek-r1:14b,,137,137,0.0,83.21,include,,1b8ba78349b413eb
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_llama32_visioin_11b,,CA,pixtral,llama3.2-vision11b,,137,137,0.0,80.29,include,,96531b8e6fa9ea69
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_llama32_vision_90b,,CA,pixtral,llama3.2-vision:90b,,137,137,0.0,89.05,include,,004e564dcf3ce0f3
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_llava34b,,CA,pixtral,llava:34b,,137,137,0.0,79.56,include,,d7b854561c3d4bdc
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_llava7b_8196,,CA,pixtral,llava:7b,ctx-8196,137,137,0.0,68.61,include,,dc4d9415bfb66bad
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_phi3_14b,,CA,pixtral,phi3:14b,,137,137,0.0,84.67,include,,dd760509171f85ec
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_phi4_14b,,CA,pixtral,phi4,,137,137,0.0,86.86,include,,8efef322676efd74
+bongard_ow,output,bongard_ow_single_mistral_comp_eval_qwen25_14b,,CA,pixtral,qwen2.5:14b,,137,137,0.0,90.51,include,,6e2f4e7ca6448400
+bongard_ow,output,Bongard_OpenWorld_single,,CA,self,gpt-4o,,500,500,0.0,92.8,include,,728d52e1dfae18cf
+bongard_ow,output,Bongard_OpenWorld_single_mistral,,CA,self,pixtral-12b-2409,,500,500,0.0,87.2,include,,9cb90b233f0be5c6
+bongard_ow,output,Bongard_OpenWorld_single_mistral_noise_1,,CA,self,pixtral-12b-2409,noise,112,112,0.0,88.39,include,,b42a9a3da38751b6
+bongard_ow,output,Bongard_OpenWorld_single_ollama,,CA,self,llama3.2-vision,,500,500,0.0,53.4,include,,789582b28935f033
+bongard_ow,output,bongard_ow_ca_gpt5.1,,CA,self,gpt-5.1,GPT-5.1,100,100,0.0,97.0,exploratory-only,recent-model demo; barred from common-set tables,c4ebe17e0b7a49f6
+bongard_ow,output,bongard_ow_single_gemini,,CA,self,gemini-2.0-flash-exp,,500,500,0.0,93.6,include,,4cb745744a1dedd2
+bongard_ow,output,bongard_ow_single_gemma3_12b,,CA,self,gemma3:12b,,500,500,0.0,59.2,include,,0783e33888d0e33c
+bongard_ow,output,bongard_ow_single_gemma3_27b,,CA,self,gemma3:27b,,498,401,19.5,87.53,include-valid-rows-only,19.5% schema-corrupted rows excluded,05b7d8bece632529
+bongard_ow,output,bongard_ow_single_gemma3_4b,,CA,self,gemma3:4b,,500,500,0.0,54.2,include,,602dc04d336bc8b6
+bongard_ow,output,bongard_ow_single_llama32_vision_90b_1,,CA,self,llama3.2-vision:90b,,481,481,0.0,55.51,include,,9e31db03febfabfc
+bongard_ow,output,bongard_ow_single_llava-llama3,,CA,self,llava-llama3,,500,500,0.0,53.6,include,,7585c7ef24ad9b9d
+bongard_ow,output,bongard_ow_single_llava13b,,CA,self,llava:13b,,214,214,0.0,47.66,include,,3f71728a40fb5ede
+bongard_ow,output,bongard_ow_single_llava34b,,CA,self,llava:34b,,6,6,0.0,33.33,exclude,empty/crashed run (<=20 rows),50bb2030de9d3007
+bongard_ow,output,bongard_ow_single_llava7b,,CA,self,llava:7b,,500,500,0.0,66.2,include,,12658ba252aaa83c
+bongard_ow,output,bongard_ow_single_mistral_noise,,CA,self,pixtral-12b-2409,noise,1,1,0.0,100.0,exclude,empty/crashed run (<=20 rows),13a5178c954d8d0b
+bongard_ow,output,bongard_ow_single_qwen2.5vl_32b,,CA,self,qwen2.5vl:32b,,500,0,100.0,,exclude,"outputs schema-corrupted (wrong label vocabulary), degenerate",a7b5c789a3a9dda4
+bongard_ow,output,bongard_ow_single_qwen2.5vl_3b,,CA,self,qwen2.5vl:3b,,76,0,100.0,,exclude,"outputs schema-corrupted (wrong label vocabulary), degenerate",802df3f689a9ff0c
+bongard_ow,output,bongard_ow_single_qwen2.5vl_7b,,CA,self,qwen2.5vl:7b,,1,1,0.0,100.0,exclude,empty/crashed run (<=20 rows),f45002e409a83549
+bongard_ow,output,Bongard-OpenWorld_multi,,DRL,n/a (end-to-end),gpt-4o,,500,500,0.0,88.0,include,,d424b67a56be66a2
+bongard_ow,output,Bongard-OpenWorld_multi_pos,,DRL,n/a (end-to-end),gpt-4o,pos-only,100,99,1.0,84.85,include,,5346a5a70cc8e6d7
+bongard_ow,output,bongard_ow_drl_gpt5.1,,DRL,n/a (end-to-end),gpt-5.1,GPT-5.1,100,100,0.0,96.0,exploratory-only,recent-model demo; barred from common-set tables,60570a7f628aeed6
+bongard_ow,output,bongard_ow_multi_gemini,,DRL,n/a (end-to-end),gemini-2.0-flash-exp,,500,500,0.0,86.8,include,,ae2bcd26dfcfb241
+bongard_ow,output,Bongard_ow_multi_test,,DVRL,n/a (end-to-end),gpt-4o,,500,495,1.0,80.81,include,,7f735982135c63f5
+bongard_ow,output,Bongard_ow_multi_test_cot,,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,CoT,500,491,1.8,62.73,include,,16f3693bf39c5dc8
+bongard_ow,output,bongard_ow_dvrl_ablation,,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,support-size,1,1,0.0,100.0,exclude,empty/crashed run (<=20 rows),b76b725a9011fc30
+bongard_ow,output,bongard_ow_dvrl_ablation_2x2,,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,support-size,200,197,1.5,82.23,include,,b0b8efa744637579
+bongard_ow,output,bongard_ow_dvrl_ablation_4x4,,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,support-size,200,200,0.0,87.5,include,,3e6131b62fdee3d9
+bongard_ow,output,bongard_ow_dvrl_ablation_6x6,,DVRL,n/a (end-to-end),gpt-4o,support-size,200,200,0.0,93.0,include,,c4780e09707df1e3
+bongard_ow,output,bongard_ow_dvrl_gpt5.1,,DVRL,n/a (end-to-end),gpt-5.1,GPT-5.1,100,100,0.0,94.0,exploratory-only,recent-model demo; barred from common-set tables,951d65f6d3528119
+bongard_ow,output,bongard_ow_dvrl_gpt_noise,,DVRL,n/a (end-to-end),gpt-4o-2024-08-06,noise,100,95,5.0,51.58,include-valid-rows-only,5.0% schema-corrupted rows excluded,e5ec0e52264b95d7
+bongard_ow,output,bongard_ow_multi_test_gemini,,DVRL,n/a (end-to-end),gemini-2.0-flash-exp,,500,500,0.0,82.2,include,,6a70639efb593454
+bongard_ow,output,Bongard-OpenWorld_multi_eval_rule_llava13b,,RuleApply,given rule,llava:13b,,500,500,0.0,70.0,include,,9b5e8c538f60df74
+bongard_ow,output,Bongard-OpenWorld_multi_eval_rule_llava34b,,RuleApply,given rule,llava:34b,,500,500,0.0,74.8,include,,615b91af1f4a8681
+bongard_ow,output,Bongard-OpenWorld_multi_eval_rule_ollama,,RuleApply,given rule,llama3.2-vision,,500,500,0.0,68.2,include,,78d551110e025080
+bongard_ow,output,Bongard-OpenWorld_multi_eval_rule_ollama90b,,RuleApply,given rule,llama3.2-vision90b,,500,500,0.0,74.2,include,,16cbeba5c328bdf0
+bongard_ow,output,bongard_ow_multi_eval_rule_llava7b,,RuleApply,given rule,llava:7b,,500,500,0.0,72.0,include,,5d1474f4e2f2875a
+bongard_ow,output,bongard_ow_multi_eval_rule_llava_llama3,,RuleApply,given rule,llava-llama3,,500,500,0.0,53.8,include,,80760ae4e30ae370
+bongard_ow,output,bongard_ow_multi_groundeval,,RuleApply,given rule,gemini-2.0-flash-exp,,493,493,0.0,79.72,include,,6d5f742419c2a6bb
+bongard_ow,output,bongard_ow_multi_groundeval_gpt-4o-2024-08-06,,RuleApply,given rule,gpt-4o-2024-08-06,,500,500,0.0,88.8,include,,efc90420396e31de
+bongard_ow,output,bongard_ow_single_eval_rule_mistral,,RuleApply,given rule,pixtral-12b-2409,,500,499,0.2,83.97,include,,f0419f5395e45b08
+bongard_ow,output,ollama-0.9/Bongard-OpenWorld_multi_eval_rule_ollama90b,,RuleApply,given rule,llama3.2-vision90b,,500,500,0.0,74.4,include,,66fc5cb75f163ca2
+winoground,output,output/winoground_25activity/gpt-4o-2024-08-06/scores_winoground.xlsx,,CA,gemini,gpt-4o-2024-08-06,,400,400,0.0,52.0,include,config base_dir + identical description content (400/400),5f2cc595d2a80a71
+winoground,output,output/winoground_25activity/qwen2.5:14b/scores_winoground.xlsx,,CA,gemini,qwen2.5:14b,,5,5,0.0,20.0,exclude,config base_dir + identical description content (400/400),32924e32d0f72d45
+winoground,output,output/winoground_25activity/scores_winoground.xlsx,,CA,gemini,gemini-2.0-flash-exp,,400,400,0.0,42.0,include,config base_dir + identical description content (400/400),b2685de8683dad87
+winoground,output,output/winoground_25activity/scores_winoground_t1.xlsx,,CA,gemini,gemini-2.0-flash-exp,temp_t1,121,121,0.0,45.45,partial-run,config base_dir + identical description content (400/400),cc4b9deda517bfcd
+winoground,output,output/winoground_25activity/scores_winoground_wrongentries.xlsx,,CA,gemini,gemini-2.0-flash-exp,FLAGGED:wrongentries,241,241,0.0,43.57,exclude,config base_dir + identical description content (400/400),8d38b9ec4e20ac99
+winoground,output_winoground,output_winoground/gemini_activity/gpt-4o-2024-08-06/scores_winoground.xlsx,,CA,gemini,gpt-4o-2024-08-06,,400,400,0.0,52.0,include,config base_dir,5f2cc595d2a80a71
+winoground,output_winoground,output_winoground/gemini_activity/gpt-4o-2024-08-06/trial2_scores_winoground.xlsx,,CA,gemini,gpt-4o-2024-08-06,trial2,400,400,0.0,52.0,include,config base_dir,f672e7cc3dd555e7
+winoground,output_winoground,output_winoground/gemini_activity/llama3.2-vision:90b/scores_winoground.xlsx,,CA,gemini,llama3.2-vision:90b,,400,400,0.0,28.5,include,config base_dir,7735eb16eb2cf4a2
+winoground,output_winoground,output_winoground/gemini_activity/llama3.3/scores_winoground.xlsx,,CA,gemini,llama3.3,,400,400,0.0,41.75,include,config base_dir,1572f335a16a73bd
+winoground,output_winoground,output_winoground/gemini_activity/phi4/scores_winoground.xlsx,,CA,gemini,phi4,,400,400,0.0,37.75,include,config base_dir,79eca5d2e0b79d5a
+winoground,output_winoground,output_winoground/gemini_activity/qwen2.5:14b/scores_winoground.xlsx,,CA,gemini,qwen2.5:14b,,400,400,0.0,27.25,include,config base_dir,f06b0d347125e69d
+winoground,output_winoground,output_winoground/gemini_activity/qwen2.5:32b/scores_winoground.xlsx,,CA,gemini,qwen2.5:32b,,400,400,0.0,40.0,include,config base_dir,3883b01b16e5791b
+winoground,output_winoground,output_winoground/gemini_activity/scores_winoground.xlsx,,CA,gemini,gemini_activity,,400,400,0.0,42.0,include,config base_dir,b2685de8683dad87
+winoground,output_winoground,output_winoground/gemini_activity/scores_winoground_t1.xlsx,,CA,gemini,gemini_activity,temp_t1,121,121,0.0,45.45,partial-run,config base_dir,cc4b9deda517bfcd
+winoground,output_winoground,output_winoground/gemini_activity/scores_winoground_wrongentries.xlsx,,CA,gemini,gemini_activity,FLAGGED:wrongentries,241,241,0.0,43.57,exclude,config base_dir,8d38b9ec4e20ac99
+winoground,output_winoground,output_winoground/gpt_activity/gemini-2.0-flash-exp/scores_winoground.xlsx,,CA,gpt-4o,gemini-2.0-flash-exp,,395,395,0.0,40.76,include,config base_dir,5f42106835fc300b
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground.xlsx,,CA,gpt-4o,gpt-4o-2024-08-06,,400,400,0.0,47.75,include,config base_dir,444b7ecc570004cd
+winoground,output,output/winoground/scores_winoground.xlsx,,CA,unknown,gemini-2.0-flash-exp,,321,321,0.0,37.38,partial-run,,2d8ef35396ae9e0e
+winoground,output,output/winoground/scores_winoground_no worldly knowledge.xlsx,,CA,unknown,gemini-2.0-flash-exp,no-worldly-knowledge,92,92,0.0,39.13,partial-run,,0fe50766272b52f0
+winoground,output,output/winoground_activity/scores_winoground.xlsx,,CA,unknown,gemini-2.0-flash-exp,,80,80,0.0,40.0,partial-run,unlabelled directory,220ead4a2cf1c071
+winoground,output_winoground,output_winoground/activity_t1/scores_winoground_t0.xlsx,,CA,unknown,gemini-2.0-flash-exp,temp_t1+temp_t0,7,7,0.0,57.14,exclude,unlabelled directory,e3e145ad0f31dccb
+winoground,output_winoground,output_winoground/activity_t1/scores_winoground_t1.xlsx,,CA,unknown,gemini-2.0-flash-exp,temp_t1,398,398,0.0,38.94,include,unlabelled directory,37b1eb3c54bf1df1
+winoground,output,output/winoground_direct/scores_winoground.xlsx,,DVRL,n/a (direct),gemini-2.0-flash-exp,,3,3,0.0,0.0,exclude,"end-to-end, no descriptions",e75ca6c81ba1c884
+winoground,output_winoground,output_winoground/gpt_activity/gemini-2.0-flash-exp/scores_winoground_ica.xlsx,,ICA,gpt-4o,gemini-2.0-flash-exp,,52,52,0.0,65.38,partial-run,config base_dir,be88ac734d9dc98f
+winoground,output_winoground,output_winoground/gpt_activity/gemini-2.0-flash/scores_winoground_ica.xlsx,,ICA,gpt-4o,gemini-2.0-flash,,399,399,0.0,43.36,include,config base_dir,73c9d3f25427437f
+winoground,output_winoground,output_winoground/gpt_activity/gemini-2.0-flash/scores_winoground_ica_2.xlsx,,ICA,gpt-4o,gemini-2.0-flash,,3,3,0.0,0.0,exclude,config base_dir,c1fbfe5f15c23d18
+winoground,output_winoground,output_winoground/gpt_activity/gemini-2.0-flash/scores_winoground_ica_no_commonsense_single.xlsx,,ICA,gpt-4o,gemini-2.0-flash,no-commonsense,398,398,0.0,45.73,include,config base_dir,8287d28b7b41c8a1
+winoground,output_winoground,output_winoground/gpt_activity/gemini-2.0-flash/scores_winoground_ica_single_qn.xlsx,,ICA,gpt-4o,gemini-2.0-flash,single-question,400,400,0.0,46.75,include,config base_dir,c4cae42aab46f483
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_1_single_qn_55.75.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,single-question,400,400,0.0,55.75,include,config base_dir,6a935d51c005b52b
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_2.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,,2,2,0.0,50.0,exclude,config base_dir,df1516381a0b88c6
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_55.75.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,,400,400,0.0,55.75,include,config base_dir,91d192251ab8aa20
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_multi.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,multi-question,8,8,0.0,75.0,exclude,config base_dir,8f5985884fef5226
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_single_no_commonsense_55.25.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,no-commonsense,400,400,0.0,55.25,include,config base_dir,e39ad9391ab2bb7d
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_single_qn_55.00.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,single-question,400,400,0.0,54.0,include,config base_dir,aeeaf76a4860dc2d
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_trial1_notworking.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,FLAGGED:notworking,400,400,0.0,,exclude,config base_dir,73288d7e9b6db85c
+winoground,output_winoground,output_winoground/gpt_activity/gpt-4o-2024-08-06/scores_winoground_ica_v2.xlsx,,ICA,gpt-4o,gpt-4o-2024-08-06,v2,64,64,0.0,70.31,partial-run,config base_dir,20eabbfa6b66b9f6

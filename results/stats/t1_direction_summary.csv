@@ -1,0 +1,6 @@
+family,n_contrasts,positive,negative,median_delta,n_individually_significant
+F1 paradigm (OW),16,4,12,-5.8,11
+F2 perception swap (OW),7,7,0,5.11,1
+F3 CA vs ICA (Wino),6,6,0,7.75,6
+F4 rule supply (OW),8,3,5,-5.5,6
+F5 paradigm (HOI),18,2,16,-5.5,0

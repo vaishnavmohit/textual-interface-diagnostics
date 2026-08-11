@@ -1,0 +1,8 @@
+model,paradigm,n,acc,d_prime,measurable
+gemini-2.0-flash-exp,DVRL,373,53.3,0.22,False
+gemini-2.0-flash-exp,DRL,392,61.3,0.58,False
+gemini-2.0-flash-exp,CA,392,74.5,1.34,True
+gpt-4o-2024-08-06,DVRL,392,68.5,1.01,True
+gpt-4o-2024-08-06,DRL,392,71.8,1.28,True
+gpt-4o-2024-08-06,CA,392,77.2,1.49,True
+pixtral-12b-2409,CA,392,63.2,0.67,True

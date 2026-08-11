@@ -1,0 +1,24 @@
+# C2r stage 2 -- reason over the relational descriptions.
+# Same reasoner and decoding as the CA arm it is compared against.
+#
+#   python main.py --config config/bongard_hoi/reason_ca_relational_gemini3_soua.yaml
+model:
+  module: "pri.pipeline"
+  function: "run"
+  parameters:
+    dataset: "bongard_hoi"
+    json_path: "${DATA_DIR}/bongard_hoi/bongard_hoi_test_seen_obj_unseen_act.json"
+    image_dir: "${DATA_DIR}/hake"
+    reasoner_model: "gemini-3-flash-preview"
+    perception_model: "gemini-3-flash-preview"
+    context: "ca_relational"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_hoi_soua_relational"
+    split_name: "bongard_hoi_soua"
+    num_samples: 200
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 2048
+    num_ctx: 8192
+    think: false

@@ -1,0 +1,40 @@
+# Textual DRL — the matched staging control for the CA - DRL contrast.
+#
+# Reads the SAME frozen descriptions as the CA arm below, with the same
+# reasoner and decoding, and varies only the STAGING: the supports are
+# compressed into a short rule (<20 words -- the identical budget image-DRL
+# uses) and the query description is classified against that rule alone,
+# instead of the reasoner holding all thirteen descriptions jointly.
+#
+#   textual-DRL - CA   isolates compress-to-rule vs joint context.
+#
+# If null, the CA - DRL deficit cannot be a staging artifact, and attributing it
+# to what the descriptions carry rests on a manipulation, not on anatomy alone.
+#
+# num_ctx is 16384, NOT the 8192 used elsewhere: measured prompts reach ~8.9k
+# tokens on OW and ~11k on HOI, so 8192 silently truncates the longest problems
+# -- and it truncates CA MORE than textual-DRL (CA's single prompt is the larger
+# one), which would bias the contrast in favour of the result we are testing.
+# Both arms are therefore regenerated at the same safe context.
+#
+#   python main.py --config config/bongard_ow/textdrl_staging_gpt4odesc_phi4-14b.yaml
+model:
+  module: "pri.pipeline"
+  function: "run_textual_drl"
+  parameters:
+    reasoner_model: "phi4"
+    dataset: "bongard_ow"
+    json_path: "${DATA_DIR}/bongard_ow/rearranged_bongard.json"
+    image_dir: "${DATA_DIR}/bongard_ow"
+    perception_model: "gpt-4o-2024-08-06"     # same artifact both arms read
+    context: "ca"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_ow_staging"
+    split_name: "bongard_ow"
+    num_samples: 500
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 2048
+    num_ctx: 16384
+    think: false

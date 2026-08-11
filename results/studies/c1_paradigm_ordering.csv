@@ -1,0 +1,4 @@
+model,contrast,n,delta,ci_lo,ci_hi
+gpt-4o-2024-08-06,DRL - DVRL,400,3.2,-1.2,7.5
+gpt-4o-2024-08-06,CA - DRL,400,5.5,0.5,11.0
+gpt-4o-2024-08-06,CA - DVRL,400,8.8,3.2,14.2

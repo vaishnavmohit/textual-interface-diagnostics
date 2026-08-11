@@ -1,0 +1,24 @@
+# C3 stage 2 (reasoning): phi4:14b reasons over the FROZEN gemma3:27b 'ca_taskaware' descriptions.
+# Aborts if the matching describe run has not produced the artifact (never generates descriptions).
+# Reasoner swap: copy this and change ONLY reasoner_model, so every reasoner consumes identical descriptions by hash.
+#   python main.py --config config/bongard_ow/reason_ca_taskaware_gemma3desc_phi4-14b.yaml
+model:
+  module: "pri.pipeline"
+  function: "run"
+  parameters:
+    dataset: "bongard_ow"
+    json_path: "${DATA_DIR}/bongard_ow/rearranged_bongard.json"
+    image_dir: "${DATA_DIR}/bongard_ow"
+    reasoner_model: "phi4:14b"
+    perception_model: "gemma3:27b"     # must match the describe run
+    context: "ca_taskaware"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_ow_gemma3desc"            # -> ${OUTPUT_DIR}/bongard_ow_gemma3desc/phi4:14b/ca_taskaware_temp_0/
+    split_name: "bongard_ow"
+    num_samples: 500                      # full split (--set num_samples=5 for a smoke run)
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 2048
+    num_ctx: 8192
+    think: false

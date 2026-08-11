@@ -1,0 +1,10 @@
+factor,level,n_items,effect,ci_lo,ci_hi
+perception (GPT-4o - Pixtral),deepseek-r1:14b,137,5.11,-0.75,11.11
+perception (GPT-4o - Pixtral),llama3.2-vision11b,137,4.38,-1.5,10.69
+perception (GPT-4o - Pixtral),llava:34b,137,5.11,-2.13,12.5
+perception (GPT-4o - Pixtral),llava:7b,137,11.68,4.16,19.71
+perception (GPT-4o - Pixtral),phi3:14b,137,5.11,-1.44,11.43
+perception (GPT-4o - Pixtral),phi4,137,4.38,-0.72,9.72
+perception (GPT-4o - Pixtral),qwen2.5:14b,137,7.3,2.88,12.06
+reasoner spread | gpt-4o descriptions,max - min,137,17.52,,
+reasoner spread | pixtral descriptions,max - min,137,21.9,,

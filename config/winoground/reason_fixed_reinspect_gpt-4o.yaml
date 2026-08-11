@@ -1,0 +1,31 @@
+# C4 (Winoground) fixed reinspection: CA over the frozen descriptions + ONE
+# preregistered fixed re-inspection of the image per direction, then a final call.
+#
+# This is the budget-matched control that licenses calling ICA (C5) "adaptive":
+# identical one-extra-visual-call structure, but the question is fixed rather than
+# reasoner-generated. Per plan §E2/E3, without this run ICA must be reported as an
+# additional-inspection effect, not adaptivity.
+#
+# Consumes the SAME frozen `winoground` descriptions as C2 (reason_winoground_*)
+# and C5 (reason_ica_*), so the three are directly paired on the same instances.
+# Requires: python main.py --config config/winoground/describe_activity_gpt-4o.yaml
+#
+#   python main.py --config config/winoground/reason_fixed_reinspect_gpt-4o.yaml
+model:
+  module: "pri.winoground"
+  function: "run_fixed_reinspect"
+  parameters:
+    dataset: "winoground"
+    json_path: "${DATA_DIR}/winoground/winoground.json"
+    image_dir: "${DATA_DIR}/winoground/images"
+    reasoner_model: "gpt-4o"
+    perception_model: "gpt-4o"          # must match the describe run
+    reinspection_model: "gpt-4o"        # who answers the fixed question; defaults to perception_model
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "winoground"            # -> ${OUTPUT_DIR}/winoground/gpt-4o/winoground_fixed_reinspect_temp_0/
+    split_name: "winoground"
+    num_samples: 400                      # full Winoground set (--set num_samples=5 for a smoke run)
+    temperature: 0
+    max_tokens: 3000
+    num_ctx: 8192
+    think: false

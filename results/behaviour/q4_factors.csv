@@ -1,0 +1,13 @@
+factor,level,mean_frac_correct,n_items
+commonsense,0,71.6,365
+commonsense,1,67.2,16
+commonsense,2,69.4,14
+commonsense,3,68.0,36
+commonsense,4,76.8,14
+commonsense,5,60.0,10
+commonsense,6,71.0,10
+commonsense,7,64.9,4
+commonsense,8,71.4,8
+commonsense,9,69.5,26
+polarity,negative,70.6,252
+polarity,positive,71.2,251

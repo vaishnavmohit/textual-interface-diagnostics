@@ -1,0 +1,9 @@
+variant,direction,metric,n_asked,n_not_asked,ask_rate,ca_acc_on_asked,ca_asked_lo,ca_asked_hi,ca_acc_on_not_asked,ca_not_lo,ca_not_hi,selectivity_gap,yield_on_asked,yield_asked_lo,yield_asked_hi,drift_on_not_asked,drift_not_lo,drift_not_hi,selective
+ica_1_single_qn,text,text_score,263,137,65.8,60.8,55.1,66.9,90.5,85.4,94.9,29.7,10.3,4.2,16.0,0.0,-3.6,3.6,True
+ica_1_single_qn,image,image_score,400,0,100.0,,,,,,,,10.0,5.8,14.2,,,,False
+ica,text,text_score,262,138,65.5,58.8,52.7,64.9,94.2,89.9,97.8,35.4,8.4,2.3,14.5,0.0,-2.9,2.9,True
+ica,image,image_score,400,0,100.0,,,,,,,,9.5,5.0,13.8,,,,False
+ica_single_qn,text,text_score,259,141,64.8,59.8,54.1,65.3,91.5,86.5,95.7,31.6,10.0,4.2,16.2,0.7,-1.4,3.5,True
+ica_single_qn,image,image_score,400,0,100.0,,,,,,,,7.2,3.2,11.2,,,,False
+ica_no_cs,text,text_score,258,142,64.5,59.3,53.5,65.1,92.3,88.0,96.5,33.0,10.5,4.7,16.7,0.7,-2.1,3.5,True
+ica_no_cs,image,image_score,400,0,100.0,,,,,,,,8.0,3.2,12.3,,,,False

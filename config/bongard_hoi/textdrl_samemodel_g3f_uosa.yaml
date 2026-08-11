@@ -1,0 +1,39 @@
+# E8 -- same-model textual DRL: the identifying control (reviewer-requested).
+#
+# The Qwen-based staging control (Table 14 / supplement) isolates staging under a
+# DIFFERENT reasoner on ONE split, so it cannot identify the representational
+# term of the CA - DRL contrast. This condition removes both mismatches: the
+# reasoner is Gemini-3-Flash, the same model whose CA and visual-DRL cells the
+# decomposition concerns, reading its OWN frozen descriptions, on all four
+# splits.
+#
+# Yields three same-model, same-instance contrasts:
+#   textual DRL - CA          staging at fixed textual representation
+#   textual DRL - visual DRL  text vs pixels at MATCHED staging  <- identifies it
+#   CA - visual DRL           the total workflow difference (already reported)
+#
+# Descriptions already exist, so only the reasoning stages are billed.
+# Requires the frozen artifact for this split -- see docs/EXP_SAMEMODEL_TEXTDRL.md
+# for the import command.
+#
+#   python main.py --config config/bongard_hoi/textdrl_samemodel_g3f_uosa.yaml
+model:
+  module: "pri.pipeline"
+  function: "run_textual_drl"
+  parameters:
+    dataset: "bongard_hoi"
+    json_path: "${DATA_DIR}/bongard_hoi/bongard_hoi_test_unseen_obj_seen_act.json"
+    image_dir: "${DATA_DIR}/hake"
+    reasoner_model: "gemini-3-flash-preview"
+    perception_model: "gemini-3-flash-preview"   # its own descriptions
+    context: "ca"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_hoi_uosa_samemodel"
+    split_name: "bongard_hoi_uosa"
+    num_samples: 500
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 2048
+    num_ctx: 16384
+    think: false

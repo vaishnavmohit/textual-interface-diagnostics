@@ -1,0 +1,4 @@
+condition,k,n_models_available,splithalf_rho,pool_reliability,ev1_excess_over_null,median_excess_cofailure
+own descriptions,8,8,0.14,0.246,0.569,0.9
+fixed descriptions,8,37,0.418,0.589,1.946,3.15
+"fixed, acc-matched",8,37,0.301,0.463,0.842,1.31

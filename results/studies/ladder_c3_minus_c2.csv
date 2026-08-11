@@ -1,0 +1,2 @@
+contrast,n,c2_acc,c3_acc,delta,ci_lo,ci_hi,c3_fixes,c3_breaks,mcnemar_p,c2_dprime,c3_dprime,c2_criterion,c3_criterion,repro_legacy,repro_agreement,repro_mcnemar_p
+C3 - C2 (qwen2.5:14b),499,92.79,91.98,-0.8,-3.01,1.4,12,16,0.5716,2.9,2.79,-0.06,0.0,92.99,94.2,1.0

@@ -1,0 +1,34 @@
+# CA stage 1 on Bongard-HOI soua with a second Gemini model.
+#
+# Purpose: is the interface deficit (DVRL 2.07 vs CA 1.73 in d') a property of
+# gemini-3-flash-preview, or of the generation? Nothing about the pipeline
+# changes -- same task-blind C2 schema (structured_v1), same split, same
+# decoding. Only the model name differs.
+#
+# BACKEND NOTE: gemini-3-flash-preview is listed in llm.CLOUD_MODELS, so it
+# routes to Ollama Cloud. gemini-3.5-flash-lite is not, so `_backend` sends it
+# to the Google Gemini API (GEMINI_API_KEY). If Ollama Cloud serves this model,
+# add its name to CLOUD_MODELS so both arms share a backend; otherwise the
+# comparison carries a backend change alongside the model change. See
+# docs/RUN_LIST.md item 4.
+#
+#   python main.py --config config/bongard_hoi/describe_ca_gemini35lite_soua.yaml
+model:
+  module: "pri.describe"
+  function: "run"
+  parameters:
+    dataset: "bongard_hoi"
+    json_path: "${DATA_DIR}/bongard_hoi/bongard_hoi_test_seen_obj_unseen_act.json"
+    image_dir: "${DATA_DIR}/hake"
+    perception_model: "gemini-3.5-flash-lite"
+    context: "ca"                 # the unmodified C2 schema -- structured_v1
+    output_dir: "${OUTPUT_DIR}"
+    split_name: "bongard_hoi_soua"
+    num_samples: 500              # matches the existing generation grid
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 3000
+    num_ctx: 8192
+    think: false
+    force: false

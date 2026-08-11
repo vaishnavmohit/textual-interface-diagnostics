@@ -1,0 +1,3 @@
+model,n,ca_source,ca,dvrl,ca_minus_dvrl,ci_lo,ci_hi,both_wrong,only_ca,only_dvrl
+gpt-4o,500,self,92.8,80.0,-12.8,-16.6,-8.8,14,86,22
+gemini-2.0-flash-exp,500,self,93.6,82.2,-11.4,-15.0,-7.8,17,72,15

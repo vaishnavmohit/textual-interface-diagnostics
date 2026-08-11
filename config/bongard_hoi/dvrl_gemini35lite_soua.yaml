@@ -1,0 +1,26 @@
+# DVRL (end-to-end, all 13 images at once) on Bongard-HOI soua.
+#
+# This is the arm CA is measured against -- without it the CA number has no
+# reference on this model, so run it in the same session. Independent of the
+# describe/reason pair, so it can run concurrently.
+#
+#   python main.py --config config/bongard_hoi/dvrl_gemini35lite_soua.yaml
+model:
+  module: "pri.endtoend"
+  function: "run"
+  parameters:
+    dataset: "bongard_hoi"
+    json_path: "${DATA_DIR}/bongard_hoi/bongard_hoi_test_seen_obj_unseen_act.json"
+    image_dir: "${DATA_DIR}/hake"
+    model: "gemini-3.5-flash-lite"
+    context: "dvrl"
+    output_dir: "${OUTPUT_DIR}"
+    experiment: "bongard_hoi_soua_dvrl"
+    split_name: "bongard_hoi_soua"
+    num_samples: 500
+    m: 6
+    n: 6
+    temperature: 0
+    max_tokens: 3000
+    num_ctx: 8192
+    think: false

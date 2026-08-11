@@ -1,0 +1,5 @@
+condition,induction,n_runs,n_obs,accuracy,ci_lo,ci_hi
+CA,model-induced,60,27013,76.79,75.46,78.06
+DRL,model-induced,2,1000,87.4,84.72,89.92
+DVRL,model-induced,2,995,81.51,78.79,84.14
+RuleApply,oracle (given),10,4992,73.98,72.04,75.86
