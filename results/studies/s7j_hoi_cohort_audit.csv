@@ -1,0 +1,61 @@
+model,paradigm,split,scheduled_n,archived_n,valid_binary_n,common100_archived_n,common100_valid_n,outside_common_n,common100_complete
+GPT-4o,DVRL,sosa,100,100,100,100,100,0,True
+GPT-4o,DVRL,soua,100,100,100,100,100,0,True
+GPT-4o,DVRL,uosa,100,100,100,100,100,0,True
+GPT-4o,DVRL,uoua,100,100,100,100,100,0,True
+GPT-4o,DRL,sosa,100,100,100,100,100,0,True
+GPT-4o,DRL,soua,100,100,100,100,100,0,True
+GPT-4o,DRL,uosa,100,100,100,100,100,0,True
+GPT-4o,DRL,uoua,100,100,100,100,100,0,True
+GPT-4o,CA,sosa,100,100,100,100,100,0,True
+GPT-4o,CA,soua,100,100,100,100,100,0,True
+GPT-4o,CA,uosa,100,100,100,100,100,0,True
+GPT-4o,CA,uoua,100,100,100,100,100,0,True
+Gemini 2.0,DVRL,sosa,100,100,96,100,96,0,True
+Gemini 2.0,DVRL,soua,100,100,97,100,97,0,True
+Gemini 2.0,DVRL,uosa,100,100,97,100,97,0,True
+Gemini 2.0,DVRL,uoua,100,100,91,100,91,0,True
+Gemini 2.0,DRL,sosa,100,100,100,100,100,0,True
+Gemini 2.0,DRL,soua,100,100,100,100,100,0,True
+Gemini 2.0,DRL,uosa,100,100,100,100,100,0,True
+Gemini 2.0,DRL,uoua,100,100,100,100,100,0,True
+Gemini 2.0,CA,sosa,100,100,100,100,100,0,True
+Gemini 2.0,CA,soua,100,100,100,100,100,0,True
+Gemini 2.0,CA,uosa,100,100,100,100,100,0,True
+Gemini 2.0,CA,uoua,100,100,100,100,100,0,True
+GPT-5.1,DVRL,sosa,500,500,500,100,100,400,True
+GPT-5.1,DVRL,soua,500,500,500,100,100,400,True
+GPT-5.1,DVRL,uosa,500,500,500,100,100,400,True
+GPT-5.1,DVRL,uoua,500,500,500,100,100,400,True
+GPT-5.1,DRL,sosa,500,500,500,100,100,400,True
+GPT-5.1,DRL,soua,500,500,500,100,100,400,True
+GPT-5.1,DRL,uosa,500,500,500,100,100,400,True
+GPT-5.1,DRL,uoua,500,500,500,100,100,400,True
+GPT-5.1,CA,sosa,500,500,500,100,100,400,True
+GPT-5.1,CA,soua,500,500,500,100,100,400,True
+GPT-5.1,CA,uosa,500,500,500,100,100,400,True
+GPT-5.1,CA,uoua,500,500,500,100,100,400,True
+Gemini 3 Flash,DVRL,sosa,500,492,492,100,100,392,True
+Gemini 3 Flash,DVRL,soua,500,492,492,100,100,392,True
+Gemini 3 Flash,DVRL,uosa,500,486,486,100,100,386,True
+Gemini 3 Flash,DVRL,uoua,500,490,490,98,98,392,False
+Gemini 3 Flash,DRL,sosa,500,500,500,100,100,400,True
+Gemini 3 Flash,DRL,soua,500,500,500,100,100,400,True
+Gemini 3 Flash,DRL,uosa,500,495,495,100,100,395,True
+Gemini 3 Flash,DRL,uoua,500,493,493,99,99,394,False
+Gemini 3 Flash,CA,sosa,500,500,500,100,100,400,True
+Gemini 3 Flash,CA,soua,500,490,490,100,100,390,True
+Gemini 3 Flash,CA,uosa,500,494,494,100,100,394,True
+Gemini 3 Flash,CA,uoua,500,490,490,98,98,392,False
+Gemini 3.5 Flash Lite,DVRL,sosa,100,99,99,99,99,0,False
+Gemini 3.5 Flash Lite,DVRL,soua,100,100,100,100,100,0,True
+Gemini 3.5 Flash Lite,DVRL,uosa,100,100,100,100,100,0,True
+Gemini 3.5 Flash Lite,DVRL,uoua,100,99,99,99,99,0,False
+Gemini 3.5 Flash Lite,DRL,sosa,100,100,100,100,100,0,True
+Gemini 3.5 Flash Lite,DRL,soua,100,100,100,100,100,0,True
+Gemini 3.5 Flash Lite,DRL,uosa,100,100,100,100,100,0,True
+Gemini 3.5 Flash Lite,DRL,uoua,100,99,99,99,99,0,False
+Gemini 3.5 Flash Lite,CA,sosa,100,97,97,97,97,0,False
+Gemini 3.5 Flash Lite,CA,soua,100,100,100,100,100,0,True
+Gemini 3.5 Flash Lite,CA,uosa,100,97,97,97,97,0,False
+Gemini 3.5 Flash Lite,CA,uoua,100,95,95,95,95,0,False

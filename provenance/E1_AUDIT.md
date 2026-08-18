@@ -1,7 +1,7 @@
 # E1 audit — recomputing the paper's numbers from raw predictions
 
 **Date:** 2026-07-17. **Source:** the 154 sha256-verified `results.xlsx` recorded in
-`DATA_SOURCE_MANIFEST.csv` (the authors' compute environment). Accuracy recomputed as
+`DATA_SOURCE_MANIFEST.csv` (ai-lab `<author-compute-root>`). Accuracy recomputed as
 `mean(test_cat_label == test_category_identified)` directly from per-sample rows.
 
 ## Headline: the paper reproduces

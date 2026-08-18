@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Does the paradigm ordering survive at 100 problems per split?
 
-Three of the five Bongard-HOI models ran 100 problems per split and two ran
-500. Restricting the two large runs to their first 100 per split makes all five
-commensurable -- and that subset is not arbitrary: it is exactly the instance
-set the older generation ran, verified identical on all four splits.
+Three of the five Bongard-HOI model configurations were scheduled on 100
+problems per split and two on 500. Restricting the larger scheduled runs to the
+fixed first-100 manifest makes the intended cohorts commensurable. Some Gemini
+3 Flash archive rows are missing, so contrasts are paired on the available
+intersection rather than assuming every restricted arm contains 400 valid
+predictions. The ID-level accounting is performed by
+``s7j_hoi_cohort_audit.py``.
 
 Two questions, kept apart:
   1. Is the DVRL < DRL < CA ordering consistent at n=100, per split and pooled?

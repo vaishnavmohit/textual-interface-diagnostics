@@ -31,4 +31,3 @@ audit trail and `provenance/DATA_SOURCE_MANIFEST.csv` for source-file hashes.
 Invalid model outputs are retained explicitly. Use `pred_valid` and each row's
 `analysis_decision` when reproducing manuscript statistics; do not silently
 coerce a missing `is_correct` value to `False`.
-
