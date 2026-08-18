@@ -1,0 +1,9 @@
+split,artifact_group,scheduled_n,positive_pct,valid_visual_n,visual_dvrl_accuracy_pct,fisher_p_class_composition
+sosa,supported,422,50.2,417,87.5,0.9019856939689838
+sosa,missing,78,48.7,75,90.7,0.9019856939689838
+soua,supported,457,54.5,449,83.7,0.055785542168322426
+soua,missing,43,69.8,43,74.4,0.055785542168322426
+uosa,supported,457,49.9,449,82.2,1.0
+uosa,missing,43,51.2,37,81.1,1.0
+uoua,supported,460,55.9,458,85.6,1.0
+uoua,missing,40,55.0,32,90.6,1.0

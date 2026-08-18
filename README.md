@@ -2,14 +2,15 @@
 
 Code and frozen evaluation outputs for:
 
-> **When Textual Interfaces Help—and When They Fail: Diagnosing Perception and Reasoning in Multi-Image Concept Induction**  
+> **Textual Interfaces Between Perception and Reasoning: When Multimodal Decomposition Helps—and When It Hurts**
 > Mohit Vaishnav and Tanel Tammet
 
 This repository accompanies a manuscript submitted to the *International
 Journal of Computer Vision* special issue on Multimodal Large Language Models
 for Unified Comprehension and Generation. It studies when a textual interface
-between perception and reasoning helps, and when it removes decisive visual
-evidence, across Bongard-OpenWorld, Bongard-HOI, and Winoground.
+between perception and reasoning helps, and when the tested artifacts fail to
+retain evidence useful to a joint visual workflow, across Bongard-OpenWorld,
+Bongard-HOI, and Winoground.
 
 ## What this release contains
 
@@ -48,8 +49,9 @@ python scripts/verify_release.py
 ```
 
 The check imports the maintained package, confirms the three canonical
-per-sample files and their row counts, validates key columns, and checks that
-the release contains no absolute path from the authors' compute environment.
+per-sample files and their row counts, validates key columns, checks the
+submission-stage cohort-audit files, and scans for absolute paths from the
+authors' compute environment.
 
 ## Reproduce analyses
 
@@ -89,4 +91,3 @@ remains governed by its original terms.
 
 Citation metadata is provided in `CITATION.cff`. A versioned archival DOI will
 be added to the manuscript and this README after the public release is deposited.
-

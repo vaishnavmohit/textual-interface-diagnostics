@@ -17,6 +17,13 @@ EXPECTED = {
     "results/bongard_hoi_per_sample.csv.gz": (8_199, {"pred_valid", "is_correct"}),
     "results/winoground_per_sample.csv.gz": (9_751, {"group_score", "analysis_decision"}),
 }
+REQUIRED_SUBMISSION_AUDITS = (
+    "analysis/studies/s7j_hoi_cohort_audit.py",
+    "analysis/studies/s7k_description_missingness.py",
+    "results/studies/s7j_hoi_cohort_audit.csv",
+    "results/studies/s7j_hoi_paired_denominators.csv",
+    "results/studies/s7k_description_missingness.csv",
+)
 PRIVATE_PATH = re.compile(r"/(?:illukas|Users)/[^/]+/", re.IGNORECASE)
 TEXT_SUFFIXES = {".cfg", ".csv", ".json", ".md", ".py", ".toml", ".txt", ".yaml", ".yml"}
 
@@ -56,6 +63,9 @@ def main() -> int:
     importlib.import_module("pri")
     for relative, (rows, required) in EXPECTED.items():
         check_csv(relative, rows, required)
+    missing_audits = [relative for relative in REQUIRED_SUBMISSION_AUDITS if not (ROOT / relative).is_file()]
+    if missing_audits:
+        raise AssertionError(f"missing submission-stage audits: {', '.join(missing_audits)}")
     check_private_paths()
     print("release verification passed")
     return 0
@@ -63,4 +73,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

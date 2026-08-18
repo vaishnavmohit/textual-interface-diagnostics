@@ -1,0 +1,31 @@
+model,scheduled_per_split,scope,transition,contrast,paired_n,paired_n_by_split
+GPT-4o,100,common-100,rule staging,DRL - DVRL,400,100/100/100/100
+GPT-4o,100,full-run,rule staging,DRL - DVRL,400,100/100/100/100
+GPT-4o,100,common-100,description workflow,CA - DRL,400,100/100/100/100
+GPT-4o,100,full-run,description workflow,CA - DRL,400,100/100/100/100
+GPT-4o,100,common-100,complete ladder,CA - DVRL,400,100/100/100/100
+GPT-4o,100,full-run,complete ladder,CA - DVRL,400,100/100/100/100
+Gemini 2.0,100,common-100,rule staging,DRL - DVRL,381,96/97/97/91
+Gemini 2.0,100,full-run,rule staging,DRL - DVRL,381,96/97/97/91
+Gemini 2.0,100,common-100,description workflow,CA - DRL,400,100/100/100/100
+Gemini 2.0,100,full-run,description workflow,CA - DRL,400,100/100/100/100
+Gemini 2.0,100,common-100,complete ladder,CA - DVRL,381,96/97/97/91
+Gemini 2.0,100,full-run,complete ladder,CA - DVRL,381,96/97/97/91
+GPT-5.1,500,common-100,rule staging,DRL - DVRL,400,100/100/100/100
+GPT-5.1,500,full-run,rule staging,DRL - DVRL,2000,500/500/500/500
+GPT-5.1,500,common-100,description workflow,CA - DRL,400,100/100/100/100
+GPT-5.1,500,full-run,description workflow,CA - DRL,2000,500/500/500/500
+GPT-5.1,500,common-100,complete ladder,CA - DVRL,400,100/100/100/100
+GPT-5.1,500,full-run,complete ladder,CA - DVRL,2000,500/500/500/500
+Gemini 3 Flash,500,common-100,rule staging,DRL - DVRL,398,100/100/100/98
+Gemini 3 Flash,500,full-run,rule staging,DRL - DVRL,1960,492/492/486/490
+Gemini 3 Flash,500,common-100,description workflow,CA - DRL,397,100/100/100/97
+Gemini 3 Flash,500,full-run,description workflow,CA - DRL,1973,500/490/494/489
+Gemini 3 Flash,500,common-100,complete ladder,CA - DVRL,396,100/100/100/96
+Gemini 3 Flash,500,full-run,complete ladder,CA - DVRL,1945,492/482/485/486
+Gemini 3.5 Flash Lite,100,common-100,rule staging,DRL - DVRL,398,99/100/100/99
+Gemini 3.5 Flash Lite,100,full-run,rule staging,DRL - DVRL,398,99/100/100/99
+Gemini 3.5 Flash Lite,100,common-100,description workflow,CA - DRL,389,97/100/97/95
+Gemini 3.5 Flash Lite,100,full-run,description workflow,CA - DRL,389,97/100/97/95
+Gemini 3.5 Flash Lite,100,common-100,complete ladder,CA - DVRL,388,96/100/97/95
+Gemini 3.5 Flash Lite,100,full-run,complete ladder,CA - DVRL,388,96/100/97/95
