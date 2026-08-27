@@ -91,12 +91,13 @@ def failure_mode(bad_values: pd.Series) -> str:
     """Classify *why* outputs were invalid. These are not one phenomenon.
 
     Three distinct causes appear in the data, and they demand different
-    responses — only the first is a harness bug we can fix and re-run:
+    responses. The first identifies a pilot run that must be excluded as a
+    whole because its output vocabulary is incompatible with the benchmark:
 
     schema_vocabulary  the model emitted `pos`/`neg` because Ollama's `format=`
                        enum constrained generation to the wrong vocabulary. The
-                       model could reason but not express the answer. Re-runnable
-                       under the fixed schema.
+                       The canonical prediction table excludes every row from
+                       such a run; the run registry retains its provenance.
     template_echo      the model returned the instruction text itself
                        ("cat_1 or cat_2") instead of choosing. A formatting
                        failure; re-running may fix it.
@@ -325,13 +326,19 @@ def main() -> None:
     hoi = build_bongard(raw, [("output_bongard_hoi", ""), ("output_bongard_hoi_rerun", "")], "bongard_hoi")
     wino = build_winoground(raw)
 
-    ow.to_csv(out / "bongard_ow_per_sample.csv.gz", index=False, compression="gzip")
+    # The public per-sample table is analysis-ready: omit every row belonging
+    # to a run whose constrained output vocabulary did not match the benchmark.
+    # Keep the unfiltered frame for the run registry so the exclusion remains
+    # explicit and auditable rather than disappearing from provenance.
+    ow_release = ow.loc[ow["failure_mode"] != "schema_vocabulary"].copy()
+    ow_release.to_csv(out / "bongard_ow_per_sample.csv.gz", index=False, compression="gzip")
     hoi.to_csv(out / "bongard_hoi_per_sample.csv.gz", index=False, compression="gzip")
     wino.to_csv(out / "winoground_per_sample.csv.gz", index=False, compression="gzip")
     reg = registry(ow, hoi, wino)
     reg.to_csv("provenance/EXPERIMENT_REGISTRY.csv", index=False)
 
-    print(f"  bongard_ow   {len(ow):>7,} rows  {ow.experiment_dir.nunique():>3} runs")
+    print(f"  bongard_ow   {len(ow_release):>7,} released rows "
+          f"({len(ow) - len(ow_release):,} schema-misconfigured rows excluded)")
     print(f"  bongard_hoi  {len(hoi):>7,} rows  {hoi.experiment_dir.nunique():>3} runs")
     print(f"  winoground   {len(wino):>7,} rows  {wino.source_file.nunique():>3} files")
     print(f"  registry     {len(reg):>7,} runs -> provenance/EXPERIMENT_REGISTRY.csv")

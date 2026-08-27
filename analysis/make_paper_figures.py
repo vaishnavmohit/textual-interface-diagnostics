@@ -29,6 +29,7 @@ plt.rcParams.update({
     "font.size": 9, "axes.titlesize": 9, "axes.labelsize": 9,
     "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8,
     "figure.dpi": 300, "savefig.bbox": "tight",
+    "pdf.fonttype": 42, "ps.fonttype": 42,
     "axes.spines.top": False, "axes.spines.right": False,
 })
 
@@ -36,6 +37,8 @@ STEP_COLOR = {"rule": "#4878a8", "perception": "#c44e52", "both": "#55a868"}
 STEP_LABEL = {"rule": "rule staging (DRL $-$ DVRL)",
               "perception": "description workflow (CA $-$ DRL)",
               "both": "both (CA $-$ DVRL)"}
+STEP_MARKER = {"rule": "s", "perception": "^", "both": "o"}
+STEP_FILL = {"rule": "none", "perception": "full", "both": "none"}
 
 
 def ow_ladder() -> None:
@@ -70,8 +73,10 @@ def hoi_ladder() -> None:
                 continue
             r = g.loc[s]
             ax.errorbar(r.delta, y, xerr=[[r.delta - r.lo], [r.hi - r.delta]],
-                        fmt="o", color=STEP_COLOR[s], elinewidth=1.2,
-                        capsize=2.5, ms=4)
+                        fmt=STEP_MARKER[s], color=STEP_COLOR[s],
+                        markerfacecolor=(STEP_COLOR[s] if STEP_FILL[s] == "full" else "white"),
+                        markeredgecolor=STEP_COLOR[s], markeredgewidth=1.1,
+                        elinewidth=1.2, capsize=2.5, ms=5)
             y += 1.0
         ytick.append(y - 2.0)
         ylab.append(m)
@@ -80,8 +85,9 @@ def hoi_ladder() -> None:
     ax.set_yticks(ytick)
     ax.set_yticklabels(ylab)
     ax.set_xlabel("paired difference, percentage points (95% CI)")
-    handles = [plt.Line2D([], [], color=STEP_COLOR[s], marker="o", ls="",
-                          label=STEP_LABEL[s]) for s in steps]
+    handles = [plt.Line2D([], [], color=STEP_COLOR[s], marker=STEP_MARKER[s], ls="",
+                          markerfacecolor=(STEP_COLOR[s] if STEP_FILL[s] == "full" else "white"),
+                          markeredgewidth=1.1, label=STEP_LABEL[s]) for s in steps]
     ax.legend(handles=handles, loc="lower right", frameon=False)
     fig.savefig(OUT / "fig_hoi_ladder.pdf")
     plt.close(fig)

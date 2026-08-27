@@ -6,14 +6,17 @@ tables are:
 
 | File | Rows | Benchmark |
 |---|---:|---|
-| `bongard_ow_per_sample.csv.gz` | 38,041 | Bongard-OpenWorld |
+| `bongard_ow_per_sample.csv.gz` | 36,967 | Bongard-OpenWorld |
 | `bongard_hoi_per_sample.csv.gz` | 8,199 | Bongard-HOI |
 | `winoground_per_sample.csv.gz` | 9,751 | Winoground |
 
 The tables retain raw predictions, validity indicators, correctness or score
-fields, experimental-condition labels, and source hashes. Analysis scripts
-apply the documented inclusion decisions rather than silently deleting invalid
-or superseded runs.
+fields, experimental-condition labels, and source hashes. The
+Bongard-OpenWorld table excludes all 1,074 rows from three pilot runs whose
+constrained output vocabulary was incompatible with the benchmark. Their run
+identities, source hashes, and exclusion decisions remain in
+`provenance/EXPERIMENT_REGISTRY.csv`. Other invalid model outputs remain
+explicit in the canonical tables.
 
 Additional directories contain per-run workbooks and derived outputs:
 
@@ -28,6 +31,5 @@ Run `python scripts/verify_release.py` from the repository root to validate the
 canonical row counts and required columns. See `provenance/E1_AUDIT.md` for the
 audit trail and `provenance/DATA_SOURCE_MANIFEST.csv` for source-file hashes.
 
-Invalid model outputs are retained explicitly. Use `pred_valid` and each row's
-`analysis_decision` when reproducing manuscript statistics; do not silently
-coerce a missing `is_correct` value to `False`.
+Use `pred_valid` and each row's `analysis_decision` when reproducing manuscript
+statistics; do not silently coerce a missing `is_correct` value to `False`.

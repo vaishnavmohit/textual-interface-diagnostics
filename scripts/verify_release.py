@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "results/bongard_ow_per_sample.csv.gz": (38_041, {"pred_valid", "is_correct"}),
+    "results/bongard_ow_per_sample.csv.gz": (36_967, {"pred_valid", "is_correct", "failure_mode"}),
     "results/bongard_hoi_per_sample.csv.gz": (8_199, {"pred_valid", "is_correct"}),
     "results/winoground_per_sample.csv.gz": (9_751, {"group_score", "analysis_decision"}),
 }
@@ -38,7 +38,11 @@ def check_csv(relative: str, expected_rows: int, required: set[str]) -> None:
         missing = required - columns
         if missing:
             raise AssertionError(f"{relative} lacks columns: {sorted(missing)}")
-        rows = sum(1 for _ in reader)
+        rows = 0
+        for row in reader:
+            rows += 1
+            if relative.endswith("bongard_ow_per_sample.csv.gz") and row.get("failure_mode") == "schema_vocabulary":
+                raise AssertionError(f"{relative}: contains an excluded schema-misconfigured row")
     if rows != expected_rows:
         raise AssertionError(f"{relative}: expected {expected_rows} rows, found {rows}")
 

@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software or the frozen evaluation outputs, please cite the accompanying paper."
 type: software
 title: "Textual Interface Diagnostics"
-version: 1.0.0
-date-released: 2026-08-11
+version: 1.2.0
+date-released: 2026-08-27
 authors:
   - family-names: Vaishnav
     given-names: Mohit
