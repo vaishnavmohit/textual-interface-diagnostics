@@ -36,10 +36,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest, norm
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import RNG, para, save  # noqa: E402
+from _common import (RNG, cluster_randomization_pvalue, normal_ppf,
+                     para, save)  # noqa: E402
 
 POS = "pos"
 D_MIN = 0.6
@@ -75,7 +75,7 @@ def sdt(d: pd.DataFrame) -> tuple[float, float]:
     pos, neg = d.truth == POS, d.truth != POS
     hit = ((d.pred[pos] == POS).sum() + 0.5) / (pos.sum() + 1)
     fa = ((d.pred[neg] == POS).sum() + 0.5) / (neg.sum() + 1)
-    zh, zf = norm.ppf(hit), norm.ppf(fa)
+    zh, zf = normal_ppf(hit), normal_ppf(fa)
     return float(zh - zf), float(-(zh + zf) / 2)
 
 
@@ -93,12 +93,12 @@ def contrast(ca: pd.DataFrame, td: pd.DataFrame, n_boot: int = 10000):
     lo, hi = np.percentile(boots, [2.5, 97.5])
     b01 = int(((t.correct == 1) & (a.correct == 0)).sum())
     b10 = int(((t.correct == 0) & (a.correct == 1)).sum())
-    p = binomtest(b01, b01 + b10).pvalue if (b01 + b10) else 1.0
+    p = cluster_randomization_pvalue(diff, a.uid.to_numpy())
     da, _ = sdt(a)
     dt, _ = sdt(t)
     return dict(n=len(common), ca_acc=100 * float(a.correct.mean()),
                 td_acc=100 * float(t.correct.mean()), delta=100 * float(diff.mean()),
-                lo=100 * float(lo), hi=100 * float(hi), mcnemar_p=float(p),
+                lo=100 * float(lo), hi=100 * float(hi), cluster_p=float(p),
                 fix=b01, brk=b10, ca_dprime=da, td_dprime=dt,
                 same_artifact=bool(a.sha.iloc[0] == t.sha.iloc[0]))
 
@@ -133,7 +133,7 @@ def main() -> None:
         flag = "" if r["same_artifact"] else "   !! DIFFERENT DESCRIPTION ARTIFACTS"
         print(f"  {label:<32}{r['n']:>5}{r['ca_acc']:>8.2f}{r['td_acc']:>9.2f}"
               f"{r['delta']:>+8.2f}   [{r['lo']:>+6.2f},{r['hi']:>+7.2f}]"
-              f"{r['mcnemar_p']:>8.3f}   {r['ca_dprime']:.2f}->{r['td_dprime']:.2f}{flag}")
+              f"{r['cluster_p']:>8.3f}   {r['ca_dprime']:.2f}->{r['td_dprime']:.2f}{flag}")
         rows.append(dict(cell=label, description_source=source, **r))
 
     if not rows:

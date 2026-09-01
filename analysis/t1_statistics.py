@@ -9,8 +9,8 @@ Produces, under --out:
 
   t1_accuracy_ci.csv        every run: accuracy, cluster-bootstrap 95% CI, n,
                             invalid rate, positive-response rate, degeneracy flag
-  t1_paired_tests.csv       McNemar on common instances for the declared
-                            contrast families, with Holm-adjusted p per family
+  t1_paired_tests.csv       cluster-aware paired randomization tests on common
+                            instances, with Holm-adjusted p per family
   t1_separability.csv       which adjacent orderings survive their CIs
   t1_icc.csv                measured intra-cluster correlation (justifies the
                             clustering choice rather than asserting it)
@@ -28,7 +28,9 @@ Design notes
 * Degenerate models (near-constant answering) are flagged, because an accuracy
   near 50% on a balanced set means something different for them.
 * Effect sizes accompany every p-value: accuracy difference, its paired
-  bootstrap CI, and the discordant counts that drive McNemar.
+  bootstrap CI, and discordant-case counts.  Condition labels are exchanged
+  for whole support-set clusters, so the test respects the same dependency
+  structure as the confidence interval.
 """
 from __future__ import annotations
 
@@ -39,7 +41,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from statistics_helpers import cluster_bootstrap_ci, mcnemar_pair, holm
+from statistics_helpers import cluster_bootstrap_ci, paired_cluster_test, holm
 
 RNG = np.random.default_rng(42)
 USABLE = ("include",)
@@ -123,7 +125,10 @@ def _pair(g_a: pd.DataFrame, g_b: pd.DataFrame, unit: str, cluster: str, metric:
     if len(common) < 20:
         return None
     a, b = a.loc[common], b.loc[common]
-    res = mcnemar_pair(a.reset_index(), b.reset_index(), metric, unit)
+    res = paired_cluster_test(
+        a.reset_index(), b.reset_index(), metric, unit, cluster,
+        n_resamples=100_000,
+    )
     # When the cluster IS the unit (Winoground items), set_index has consumed the
     # column — resample the index instead. Each item is then its own cluster,
     # which reduces to an ordinary paired bootstrap, as intended.

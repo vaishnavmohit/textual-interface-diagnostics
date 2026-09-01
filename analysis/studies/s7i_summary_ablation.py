@@ -32,10 +32,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest, norm
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import RNG, para, save  # noqa: E402
+from _common import (RNG, cluster_randomization_pvalue, normal_ppf,
+                     para, save)  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 STAGING = ROOT / "results" / "staging"
@@ -68,7 +68,7 @@ def sdt(d: pd.DataFrame) -> float:
     pos, neg = d.truth == POS, d.truth != POS
     h = ((d.pred[pos] == POS).sum() + 0.5) / (pos.sum() + 1)
     f = ((d.pred[neg] == POS).sum() + 0.5) / (neg.sum() + 1)
-    return float(norm.ppf(h) - norm.ppf(f))
+    return float(normal_ppf(h) - normal_ppf(f))
 
 
 def contrast(full: pd.DataFrame, summ: pd.DataFrame, n_boot: int = 10000):
@@ -85,10 +85,10 @@ def contrast(full: pd.DataFrame, summ: pd.DataFrame, n_boot: int = 10000):
     lo, hi = np.percentile(boots, [2.5, 97.5])
     b01 = int(((b.correct == 1) & (a.correct == 0)).sum())
     b10 = int(((b.correct == 0) & (a.correct == 1)).sum())
-    p = binomtest(b01, b01 + b10).pvalue if (b01 + b10) else 1.0
+    p = cluster_randomization_pvalue(diff, a.uid.to_numpy())
     return dict(n=len(common), full=100 * float(a.correct.mean()),
                 summ=100 * float(b.correct.mean()), delta=100 * float(diff.mean()),
-                lo=100 * float(lo), hi=100 * float(hi), mcnemar_p=float(p),
+                lo=100 * float(lo), hi=100 * float(hi), cluster_p=float(p),
                 fix=b01, brk=b10, d_full=sdt(a), d_summ=sdt(b))
 
 
@@ -111,7 +111,7 @@ def main() -> None:
         star = "*" if (r["lo"] > 0 or r["hi"] < 0) else " "
         print(f"  {label:<16}{r['n']:>5}{r['full']:>9.2f}{r['summ']:>9.2f}"
               f"{r['delta']:>+9.2f}{star}[{r['lo']:>+6.2f},{r['hi']:>+6.2f}]"
-              f"{r['mcnemar_p']:>8.3f}   {r['d_full']:.2f}->{r['d_summ']:.2f}"
+              f"{r['cluster_p']:>8.3f}   {r['d_full']:.2f}->{r['d_summ']:.2f}"
               f"   {r['fix']}/{r['brk']}")
         rows.append(dict(reasoner=label, **r))
 
@@ -133,7 +133,7 @@ How much description text helps depends on the reasoner, not on the schema.
 Replacing each description with its own one-sentence Summary --- prose at roughly
 a tenth of the characters, from the same perceptual pass --- costs
 {loss.reasoner} {abs(loss.delta):.2f} points ([{loss.lo:+.2f}, {loss.hi:+.2f}])
-while {gain.reasoner} \emph{{gains}} {gain.delta:.2f}
+while {gain.reasoner} \\emph{{gains}} {gain.delta:.2f}
 ([{gain.lo:+.2f}, {gain.hi:+.2f}], $d'$ {gain.d_full:.2f} to {gain.d_summ:.2f}).
 Because one generation feeds both arms, this cannot be a describer difference:
 the same artifact is better for one reader shortened and worse for another. It

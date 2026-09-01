@@ -1,0 +1,4 @@
+run,n,single_label_pct,remap_acc_pct,binom_p_vs_chance,d_prime,prose_verdicts,prose_contradicts_field
+bongard_ow_single_qwen2.5vl_32b,500,81.0,52.2,0.348,0.16,25,14
+bongard_ow_single_qwen2.5vl_3b,76,98.7,51.3,0.909,0.46,0,0
+bongard_ow_single_gemma3_27b,97,93.8,43.3,0.223,-1.21,0,0

@@ -43,33 +43,100 @@ def cluster_bootstrap_ci(values: np.ndarray, clusters: np.ndarray | None = None,
     return point, (float(lo), float(hi))
 
 
-def mcnemar_pair(a: pd.DataFrame, b: pd.DataFrame, metric: str, unit: str) -> dict:
-    """Paired McNemar over the instances both conditions answered.
+def cluster_randomization_pvalue(
+    differences: np.ndarray,
+    clusters: np.ndarray,
+    n_resamples: int = 100_000,
+    seed: int = 42,
+) -> float:
+    """Two-sided paired randomization test with signs exchanged by cluster.
 
-    ``b01`` = a wrong & b right, ``b10`` = a right & b wrong. Exact binomial when
-    discordant pairs are few, chi-square with continuity correction otherwise.
-    Rows where ``metric`` is NA are dropped, not scored — invalid model outputs
-    are missing data, not errors.
+    Under the paired sharp null, exchanging condition labels negates every
+    within-cluster difference together.  This preserves the dependence between
+    positive and negative Bongard queries that share a support set.  When every
+    row is its own cluster (as for Winoground), the procedure reduces to the
+    ordinary paired sign-flip randomization test.
+
+    The reported Monte Carlo p-value uses the standard +1 correction and is
+    therefore never zero.  A local RNG makes the result reproducible regardless
+    of which other analyses ran first.
     """
-    from scipy.stats import binomtest, chi2
+    diff = np.asarray(differences, dtype=float)
+    clu = np.asarray(clusters)
+    keep = np.isfinite(diff)
+    diff, clu = diff[keep], clu[keep]
+    if not len(diff):
+        return float("nan")
 
-    am = a.dropna(subset=[metric]).set_index(unit)[metric]
-    bm = b.dropna(subset=[metric]).set_index(unit)[metric]
-    common = am.index.intersection(bm.index)
-    am, bm = am.loc[common].astype(int), bm.loc[common].astype(int)
-    b01 = int(((am == 0) & (bm == 1)).sum())
-    b10 = int(((am == 1) & (bm == 0)).sum())
-    disc = b01 + b10
-    if disc == 0:
-        stat, p = 0.0, 1.0
-    elif disc < 25:
-        p = float(binomtest(min(b01, b10), disc, 0.5).pvalue)
-        stat = float("nan")
+    cluster_sums = np.asarray([
+        diff[clu == key].sum() for key in np.unique(clu)
+    ], dtype=float)
+    cluster_sums = cluster_sums[cluster_sums != 0]
+    if not len(cluster_sums):
+        return 1.0
+
+    observed = abs(float(cluster_sums.sum()))
+    rng = np.random.default_rng(seed)
+    extreme = 0
+    remaining = int(n_resamples)
+    while remaining:
+        batch = min(5_000, remaining)
+        signs = rng.integers(0, 2, size=(batch, len(cluster_sums)), dtype=np.int8)
+        signs = signs * 2 - 1
+        simulated = np.abs(signs @ cluster_sums)
+        extreme += int((simulated >= observed - 1e-12).sum())
+        remaining -= batch
+    return float((extreme + 1) / (n_resamples + 1))
+
+
+def paired_cluster_test(
+    a: pd.DataFrame,
+    b: pd.DataFrame,
+    metric: str,
+    unit: str,
+    cluster: str | None,
+    n_resamples: int = 100_000,
+) -> dict:
+    """Cluster-aware paired test over instances answered by both conditions.
+
+    ``b01`` and ``b10`` retain the familiar discordant-case accounting, but the
+    p-value is obtained by exchanging condition labels for whole clusters rather
+    than by treating every query as an independent Bernoulli trial.
+    """
+    ad = a.dropna(subset=[metric]).drop_duplicates(unit).set_index(unit)
+    bd = b.dropna(subset=[metric]).drop_duplicates(unit).set_index(unit)
+    common = ad.index.intersection(bd.index)
+    av = ad.loc[common, metric].astype(int)
+    bv = bd.loc[common, metric].astype(int)
+    if cluster is None or cluster == unit or cluster not in ad.columns:
+        clusters = common.to_numpy()
     else:
-        stat = (abs(b01 - b10) - 1) ** 2 / disc
-        p = float(chi2.sf(stat, 1))
-    return dict(n_pairs=len(common), b01=b01, b10=b10, statistic=stat, pvalue=p,
-                acc_a=round(100 * am.mean(), 2), acc_b=round(100 * bm.mean(), 2))
+        clusters = ad.loc[common, cluster].astype(str).to_numpy()
+    diff = (bv - av).to_numpy(dtype=float)
+    b01 = int(((av == 0) & (bv == 1)).sum())
+    b10 = int(((av == 1) & (bv == 0)).sum())
+    p = cluster_randomization_pvalue(diff, clusters, n_resamples=n_resamples)
+    return dict(
+        n_pairs=len(common),
+        n_clusters=int(pd.Series(clusters).nunique()),
+        b01=b01,
+        b10=b10,
+        statistic=round(float(diff.mean()), 8) if len(diff) else float("nan"),
+        pvalue=p,
+        test="cluster_sign_flip",
+        acc_a=round(100 * av.mean(), 2),
+        acc_b=round(100 * bv.mean(), 2),
+    )
+
+
+def mcnemar_pair(a: pd.DataFrame, b: pd.DataFrame, metric: str, unit: str) -> dict:
+    """Backward-compatible unclustered wrapper.
+
+    New analyses should call :func:`paired_cluster_test` and provide the actual
+    support-set cluster.  Keeping this wrapper avoids silently breaking legacy
+    scripts that operate on genuinely independent units.
+    """
+    return paired_cluster_test(a, b, metric, unit, cluster=unit)
 
 
 def holm(pvalues) -> np.ndarray:

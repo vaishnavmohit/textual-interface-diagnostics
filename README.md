@@ -2,7 +2,7 @@
 
 Code and frozen evaluation outputs for:
 
-> **Textual Interfaces Between Perception and Reasoning: When Multimodal Decomposition Helps—and When It Hurts**
+> **Diagnosing Textual Interfaces Between Perception and Reasoning in Multimodal Models**
 > Mohit Vaishnav and Tanel Tammet
 
 This repository accompanies a manuscript submitted to the *International
@@ -78,6 +78,14 @@ python main.py --config config/bongard_ow/reason_ca_qwen2.5-14b.yaml
 The first stage writes content-hashed descriptions. Reasoner swaps reuse that
 same artifact, allowing the perception output to remain fixed. See
 `config/README.md` for the available conditions and configuration overrides.
+
+For the Bongard workflows, direct and decomposed conditions process the same
+image set. Their different call counts describe execution topology, not a
+corresponding ratio of visual-token volume. The decomposed path adds request
+and description-generation overhead, but the frozen descriptions can be reused
+by multiple downstream reasoners or tasks without re-encoding the images.
+Interactive runs retain this reusable textual state and selectively return to
+the original image when the reasoner requests missing evidence.
 
 ## Data and licensing
 

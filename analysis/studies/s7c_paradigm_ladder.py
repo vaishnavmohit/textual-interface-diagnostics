@@ -37,10 +37,9 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import norm
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import RNG, bongard_valid, load, para, save  # noqa: E402
+from _common import RNG, bongard_valid, load, normal_ppf, para, save  # noqa: E402
 
 GEN = Path(__file__).resolve().parents[2] / "results" / "generation"
 SPLITS = ["sosa", "soua", "uosa", "uoua"]
@@ -99,7 +98,7 @@ def sdt(d: pd.DataFrame) -> tuple[float, float, float]:
     pos, neg = d.truth == POS, d.truth != POS
     hit = ((d.pred[pos] == POS).sum() + 0.5) / (pos.sum() + 1)
     fa = ((d.pred[neg] == POS).sum() + 0.5) / (neg.sum() + 1)
-    zh, zf = norm.ppf(hit), norm.ppf(fa)
+    zh, zf = normal_ppf(hit), normal_ppf(fa)
     return float(zh - zf), float(-(zh + zf) / 2), float(fa)
 
 
@@ -233,11 +232,10 @@ def main() -> None:
     for _, x in o.iterrows():
         print(f"  {x.model:<22}{x.drl_dprime:>12.2f}{x.perception:>+17.2f}")
     if len(o) >= 4:
-        from scipy.stats import pearsonr, spearmanr
-        pr, pp = pearsonr(o.drl_dprime, o.perception)
-        sr, sp_ = spearmanr(o.drl_dprime, o.perception)
-        print(f"\n  Pearson r = {pr:+.3f} (p = {pp:.4f})   "
-              f"Spearman rho = {sr:+.2f} (p = {sp_:.4f}), n = {len(o)} models")
+        pr = float(np.corrcoef(o.drl_dprime, o.perception)[0, 1])
+        sr = float(np.corrcoef(o.drl_dprime.rank(), o.perception.rank())[0, 1])
+        print(f"\n  Pearson r = {pr:+.3f}; Spearman rho = {sr:+.2f}, "
+              f"n = {len(o)} models (descriptive; no population p-value)")
         print("  NOTE: five models is a descriptive regularity, not an estimated law.")
         print("  Report the ordering; do not quote a threshold from the fit.")
     save(o, "s7c_perception_vs_sensitivity.csv")

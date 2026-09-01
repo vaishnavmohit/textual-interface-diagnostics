@@ -8,6 +8,8 @@ identically.
 from __future__ import annotations
 
 from pathlib import Path
+from statistics import NormalDist
+import sys
 
 import numpy as np
 import pandas as pd
@@ -16,6 +18,17 @@ REPO = Path(__file__).resolve().parents[2]
 OUT = REPO / "results" / "studies"
 USABLE = ("include", "include-valid-rows-only")
 RNG = np.random.default_rng(42)
+STD_NORMAL = NormalDist()
+
+# Re-export the common cluster-aware paired test for standalone study scripts.
+# Each script is expected to work when launched from any directory.
+sys.path.insert(0, str(REPO / "analysis"))
+from statistics_helpers import cluster_randomization_pvalue  # noqa: E402
+
+
+def normal_ppf(probability: float) -> float:
+    """Standard-normal quantile without requiring SciPy for audit reruns."""
+    return float(STD_NORMAL.inv_cdf(float(probability)))
 
 
 def load(kind: str, usable_only: bool = True) -> pd.DataFrame:

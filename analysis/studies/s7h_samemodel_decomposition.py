@@ -20,7 +20,8 @@ three conditions share a model and an instance set:
     CA - visual DRL           the total workflow difference (already reported)
 
 Every contrast is paired on the instances common to the two arms it compares,
-cluster-bootstrapped on uid, with exact McNemar and d' reported.
+cluster-bootstrapped on uid, with a cluster-level paired randomization test and
+d' reported.
 
     python analysis/studies/s7h_samemodel_decomposition.py
 """
@@ -32,11 +33,11 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest, norm
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import s7c_paradigm_ladder as S  # noqa: E402
-from _common import RNG, para, save  # noqa: E402
+from _common import (RNG, cluster_randomization_pvalue, normal_ppf,
+                     para, save)  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 SAMEMODEL = ROOT / "results" / "samemodel"
@@ -102,7 +103,7 @@ def sdt(d: pd.DataFrame) -> float:
     pos, neg = d.truth == POS, d.truth != POS
     h = ((d.pred[pos] == POS).sum() + 0.5) / (pos.sum() + 1)
     f = ((d.pred[neg] == POS).sum() + 0.5) / (neg.sum() + 1)
-    return float(norm.ppf(h) - norm.ppf(f))
+    return float(normal_ppf(h) - normal_ppf(f))
 
 
 def contrast(a: pd.DataFrame, b: pd.DataFrame, n_boot: int = 10000):
@@ -120,10 +121,10 @@ def contrast(a: pd.DataFrame, b: pd.DataFrame, n_boot: int = 10000):
     lo, hi = np.percentile(boots, [2.5, 97.5])
     b01 = int(((pb.correct == 1) & (pa.correct == 0)).sum())
     b10 = int(((pb.correct == 0) & (pa.correct == 1)).sum())
-    p = binomtest(b01, b01 + b10).pvalue if (b01 + b10) else 1.0
+    p = cluster_randomization_pvalue(diff, pa.uid.to_numpy())
     return dict(n=len(common), acc_a=100 * float(pa.correct.mean()),
                 acc_b=100 * float(pb.correct.mean()), delta=100 * float(diff.mean()),
-                lo=100 * float(lo), hi=100 * float(hi), mcnemar_p=float(p),
+                lo=100 * float(lo), hi=100 * float(hi), cluster_p=float(p),
                 fix=b01, brk=b10, d_a=sdt(pa), d_b=sdt(pb))
 
 
@@ -152,7 +153,7 @@ def main() -> None:
             star = "*" if (r["lo"] > 0 or r["hi"] < 0) else " "
             print(f"  {sp:<7}{key:<16}{r['n']:>5}{r['acc_a']:>8.2f}{r['acc_b']:>8.2f}"
                   f"{r['delta']:>+9.2f}{star}[{r['lo']:>+6.2f},{r['hi']:>+6.2f}]"
-                  f"{r['mcnemar_p']:>8.3f}   {r['d_a']:.2f}->{r['d_b']:.2f}")
+                  f"{r['cluster_p']:>8.3f}   {r['d_a']:.2f}->{r['d_b']:.2f}")
             rows.append(dict(scope=sp, contrast=key, **r))
         print()
 
@@ -175,7 +176,7 @@ def main() -> None:
         star = "*" if (r["lo"] > 0 or r["hi"] < 0) else " "
         print(f"  {key:<16}{r['n']:>5}{r['acc_a']:>8.2f}{r['acc_b']:>8.2f}"
               f"{r['delta']:>+9.2f}{star}[{r['lo']:>+6.2f},{r['hi']:>+6.2f}]"
-              f"{r['mcnemar_p']:>8.4f}   {r['d_a']:.2f}->{r['d_b']:.2f}   {blurb}")
+              f"{r['cluster_p']:>8.4f}   {r['d_a']:.2f}->{r['d_b']:.2f}   {blurb}")
         rows.append(dict(scope="pooled", contrast=key, **r))
 
     # --- the declared issued-query scoring, as a sensitivity analysis ------ #
@@ -197,7 +198,7 @@ def main() -> None:
         star = "*" if (rr["lo"] > 0 or rr["hi"] < 0) else " "
         print(f"  {key:<16}{rr['n']:>5}{rr['acc_a']:>8.2f}{rr['acc_b']:>8.2f}"
               f"{rr['delta']:>+9.2f}{star}[{rr['lo']:>+6.2f},{rr['hi']:>+6.2f}]"
-              f"{rr['mcnemar_p']:>8.4f}   {rr['d_a']:.2f}->{rr['d_b']:.2f}")
+              f"{rr['cluster_p']:>8.4f}   {rr['d_a']:.2f}->{rr['d_b']:.2f}")
         rows.append(dict(scope="pooled-strict", contrast=key, **rr))
 
     # --- dimension pooling, saved so the prose cites a file rather than a

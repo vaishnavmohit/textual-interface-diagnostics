@@ -36,11 +36,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import norm, spearmanr
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import boot_ci, bongard_valid, load, para, save  # noqa: E402
-from scipy.stats import binomtest  # noqa: E402
+from _common import (boot_ci, bongard_valid, cluster_randomization_pvalue,
+                     load, normal_ppf, para, save)  # noqa: E402
 
 POS = "cat_2"      # dataset/bongard_ow.py: imagefiles["cat_2"] = positive
 D_MIN = 0.6        # the screen used throughout: below this, accuracy is not a
@@ -54,7 +53,7 @@ def sdt(g):
         return float("nan")
     h = ((pos.pred_raw == POS).sum() + 0.5) / (len(pos) + 1)
     f = ((neg.pred_raw == POS).sum() + 0.5) / (len(neg) + 1)
-    return float(norm.ppf(h) - norm.ppf(f))
+    return float(normal_ppf(h) - normal_ppf(f))
 
 
 def main() -> None:
@@ -82,14 +81,14 @@ def main() -> None:
         pt, (lo, hi) = boot_ci((g - s).to_numpy(), clusters=uid.loc[c].to_numpy())
         fixed = int(((s == 0) & (g == 1)).sum())     # broken by own perception, repaired
         broken = int(((s == 1) & (g == 0)).sum())    # solved alone, lost with better input
-        # exact McNemar: under no effect the discordant pairs split evenly
-        p_mc = (binomtest(fixed, fixed + broken, 0.5).pvalue
-                if fixed + broken else float("nan"))
+        p_cluster = cluster_randomization_pvalue(
+            (g - s).to_numpy(), uid.loc[c].to_numpy()
+        )
         rows.append(dict(
             model=m, n=len(c),
             self_acc=round(100 * s.mean(), 1), gpt4o_acc=round(100 * g.mean(), 1),
             gain=round(100 * pt, 1), ci_lo=round(100 * lo, 1), ci_hi=round(100 * hi, 1),
-            p=round(p_mc, 5), fixed=fixed, broken=broken,
+            p=round(p_cluster, 5), fixed=fixed, broken=broken,
             d_self=round(d_s, 2), d_gpt4o=round(d_g, 2),
             measurable=bool(d_g >= D_MIN),
         ))
@@ -117,10 +116,12 @@ def main() -> None:
     # to models that can use the interface at all -- for the others the swap is
     # not a perception manipulation, since nothing downstream can exploit it.
     usable = res[res.measurable]
-    rho, p_rho = spearmanr(usable.self_acc, usable.gain) if len(usable) >= 4 else (np.nan, np.nan)
+    rho = (float(np.corrcoef(usable.self_acc.rank(), usable.gain.rank())[0, 1])
+           if len(usable) >= 4 else np.nan)
     if len(usable) >= 4:
         print(f"\n  among the {len(usable)} models that can use the interface: "
-              f"gain vs own-perception accuracy, Spearman rho={rho:+.2f} (p={p_rho:.3f})")
+              f"gain vs own-perception accuracy, Spearman rho={rho:+.2f} "
+              "(descriptive; no population p-value)")
     else:
         print(f"\n  {len(usable)} schema-valid discriminating models: correlation not reported")
     print(f"  excluded by the d' screen: "

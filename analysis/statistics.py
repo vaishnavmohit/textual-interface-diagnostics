@@ -5,8 +5,8 @@ Implements the preregistered analysis plan (docs, IJCV_SUBMISSION_PLAN §4):
 - Accuracy per (experiment, model, program) with a **cluster bootstrap** CI
   (clustered by Bongard concept when a concept/uid column is present, else by
   row). Winoground uses item-level bootstrap over entries.
-- Paired **McNemar** tests between two programs on their common instances (for
-  the C1-C5 ladder contrasts and paradigm comparisons).
+- Paired cluster-level randomization tests between two programs on their common
+  instances (for the C1-C5 ladder contrasts and paradigm comparisons).
 
 Reads the per-sample tables produced by combine_results.py (or a single
 results.xlsx). No plotting here; make_figures.py consumes these.
@@ -24,7 +24,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from statistics_helpers import holm
+from statistics_helpers import holm, paired_cluster_test
 
 RNG = np.random.default_rng(42)          # fixed seed: reproducible CIs
 N_BOOT = 2000
@@ -48,14 +48,15 @@ def cluster_bootstrap_ci(values: np.ndarray, clusters: np.ndarray | None,
     """Mean and (lo, hi) percentile CI. If clusters is given, resample whole
     clusters (accounts for correlated Bongard queries from the same concept)."""
     values = np.asarray(values, dtype=float)
-    values = values[~np.isnan(values)]
+    keep = ~np.isnan(values)
+    values = values[keep]
     if len(values) == 0:
         return float("nan"), (float("nan"), float("nan"))
     point = float(values.mean())
     if clusters is None:
         boots = [RNG.choice(values, len(values), replace=True).mean() for _ in range(n_boot)]
     else:
-        clusters = np.asarray(clusters)[: len(values)]
+        clusters = np.asarray(clusters)[keep]
         groups = {c: values[clusters == c] for c in np.unique(clusters)}
         keys = list(groups)
         boots = []
@@ -101,36 +102,8 @@ def _unit_col(df: pd.DataFrame) -> str | None:
     return None
 
 
-def mcnemar_pair(a: pd.DataFrame, b: pd.DataFrame, metric: str, unit: str):
-    """Paired McNemar on the common instances of two programs.
-
-    Returns (n_pairs, b01, b10, statistic, p_value, acc_a, acc_b). b01 = a wrong
-    & b right; b10 = a right & b wrong. Uses the exact binomial when discordant
-    pairs are few, else the chi-square approximation.
-    """
-    from scipy.stats import binomtest, chi2
-
-    am = a.dropna(subset=[metric]).set_index(unit)[metric]
-    bm = b.dropna(subset=[metric]).set_index(unit)[metric]
-    common = am.index.intersection(bm.index)
-    am, bm = am.loc[common].astype(int), bm.loc[common].astype(int)
-    b01 = int(((am == 0) & (bm == 1)).sum())
-    b10 = int(((am == 1) & (bm == 0)).sum())
-    disc = b01 + b10
-    if disc == 0:
-        stat, p = 0.0, 1.0
-    elif disc < 25:
-        p = binomtest(min(b01, b10), disc, 0.5).pvalue
-        stat = float("nan")
-    else:
-        stat = (abs(b01 - b10) - 1) ** 2 / disc
-        p = float(chi2.sf(stat, 1))
-    return dict(n_pairs=len(common), b01=b01, b10=b10, statistic=stat, pvalue=p,
-                acc_a=round(100 * am.mean(), 2), acc_b=round(100 * bm.mean(), 2))
-
-
 def paired_tests(df: pd.DataFrame, within=("experiment", "model_name")) -> pd.DataFrame:
-    """All program-vs-program McNemar tests within each (experiment, model)."""
+    """All program-vs-program cluster-aware tests within each group."""
     unit = _unit_col(df)
     if unit is None or "program_name" not in df.columns:
         return pd.DataFrame()
@@ -144,8 +117,11 @@ def paired_tests(df: pd.DataFrame, within=("experiment", "model_name")) -> pd.Da
         if metric not in g.columns or not g[metric].notna().any():
             continue
         progs = sorted(g["program_name"].unique())
+        cluster = _cluster_col(g) or unit
         for pa, pb in itertools.combinations(progs, 2):
-            res = mcnemar_pair(g[g.program_name == pa], g[g.program_name == pb], metric, unit)
+            res = paired_cluster_test(
+                g[g.program_name == pa], g[g.program_name == pb], metric, unit, cluster
+            )
             rec = dict(zip(within, gkey), metric=metric, program_a=pa, program_b=pb, **res)
             out.append(rec)
     # Holm correction within each within-group family.
@@ -156,8 +132,12 @@ def paired_tests(df: pd.DataFrame, within=("experiment", "model_name")) -> pd.Da
     # statsmodels.stats.multitest.multipletests.
     d = pd.DataFrame(out)
     if len(d):
-        d = d.sort_values("pvalue")
-        d["holm_p"] = holm(d["pvalue"].to_numpy())
+        d["holm_p"] = np.nan
+        family_cols = [c for c in within if c in d.columns]
+        families = d.groupby(family_cols, dropna=False) if family_cols else [("all", d)]
+        for _, family in families:
+            d.loc[family.index, "holm_p"] = holm(family["pvalue"].to_numpy())
+        d = d.sort_values(family_cols + ["pvalue"] if family_cols else ["pvalue"])
     return d
 
 
@@ -178,10 +158,10 @@ def main() -> None:
 
     pairs = paired_tests(df)
     if len(pairs):
-        pairs.to_csv(out / "paired_mcnemar.csv", index=False)
-        print(f"paired McNemar: {len(pairs)} comparisons -> {out}/paired_mcnemar.csv")
+        pairs.to_csv(out / "paired_cluster_tests.csv", index=False)
+        print(f"paired cluster tests: {len(pairs)} comparisons -> {out}/paired_cluster_tests.csv")
     else:
-        print("paired McNemar: skipped (need program_name + a unit id column)")
+        print("paired cluster tests: skipped (need program_name + a unit id column)")
 
 
 if __name__ == "__main__":

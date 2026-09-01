@@ -23,10 +23,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest, norm, wilcoxon
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import RNG, load, bongard_valid, para, save  # noqa: E402
+from _common import (RNG, bongard_valid, cluster_randomization_pvalue,
+                     load, normal_ppf, para, save)  # noqa: E402
 
 LADDER = Path(__file__).resolve().parents[2] / "results" / "ladder"
 N_BOOT = 4000
@@ -46,7 +46,7 @@ def sdt(d: pd.DataFrame) -> tuple[float, float]:
     neg = d[d.test_cat_label == "neg"]
     h = ((pos.test_category_identified == "pos").sum() + 0.5) / (len(pos) + 1)
     f = ((neg.test_category_identified == "pos").sum() + 0.5) / (len(neg) + 1)
-    zh, zf = norm.ppf(h), norm.ppf(f)
+    zh, zf = normal_ppf(h), normal_ppf(f)
     return float(zh - zf), float(-(zh + zf) / 2)
 
 
@@ -90,7 +90,7 @@ def contrast(tag: str) -> dict | None:
     return dict(n=len(common), c2=100*a["correct"].mean(), c3=100*b["correct"].mean(),
                 delta=100*float(diff.mean()), lo=100*lo, hi=100*hi,
                 fixed=b01, broken=b10,
-                p=binomtest(b01, b01+b10, 0.5).pvalue if b01+b10 else float("nan"),
+                p=cluster_randomization_pvalue(diff, a["uid"].to_numpy()),
                 d2=d2, d3=d3, c2c=c2c, c3c=c3c)
 
 
@@ -113,10 +113,10 @@ def main() -> None:
     save(multi, "ladder_c3_minus_c2_by_reasoner.csv")
 
     deltas = multi.delta.to_numpy()
-    stat, p_w = wilcoxon(deltas) if len(deltas) >= 5 else (float("nan"), float("nan"))
     print(f"\n  across {len(deltas)} reasoners: mean {deltas.mean():+.2f} pts, "
           f"range [{deltas.min():+.2f}, {deltas.max():+.2f}], "
-          f"{(deltas > 0).sum()} positive, Wilcoxon p={p_w:.3f}")
+          f"{(deltas > 0).sum()} positive")
+    print("  shared artifacts make these sensitivity checks dependent; no cross-reader p-value is reported")
     print(f"  every interval spans zero: {all((multi.lo < 0) & (multi.hi > 0))}")
 
     c2 = arm(LADDER / "c2_qwen25-14b.xlsx")
@@ -131,7 +131,7 @@ def main() -> None:
     lo, hi = cluster_ci(diff, uids)
     b01 = int(((a["correct"] == 0) & (b["correct"] == 1)).sum())   # C3 fixes
     b10 = int(((a["correct"] == 1) & (b["correct"] == 0)).sum())   # C3 breaks
-    p_mc = binomtest(b01, b01 + b10, 0.5).pvalue if b01 + b10 else float("nan")
+    p_cluster = cluster_randomization_pvalue(diff, uids)
     d2, c2c = sdt(a)
     d3, c3c = sdt(b)
 
@@ -139,7 +139,7 @@ def main() -> None:
     print(f"C3 role-aware : {100*b['correct'].mean():.2f}%   d'={d3:.2f}  c={c3c:+.2f}")
     print(f"C3 - C2       : {100*pt:+.2f} pts  95% CI [{100*lo:+.2f}, {100*hi:+.2f}]  "
           f"(cluster bootstrap on uid)")
-    print(f"discordant    : C3-fixes {b01}  C3-breaks {b10}   exact McNemar p={p_mc:.3f}")
+    print(f"discordant    : C3-fixes {b01}  C3-breaks {b10}   cluster-randomization p={p_cluster:.3f}")
 
     # --- reproduction check: fresh pri C2 vs legacy NS-Reasoner C2 -----------
     leg = bongard_valid(load("bongard_ow"))
@@ -151,20 +151,23 @@ def main() -> None:
     agree = float((leg.loc[rc, "correct"].to_numpy() == c2.loc[rc, "correct"].to_numpy()).mean())
     r01 = int(((leg.loc[rc, "correct"] == 0) & (c2.loc[rc, "correct"] == 1)).sum())
     r10 = int(((leg.loc[rc, "correct"] == 1) & (c2.loc[rc, "correct"] == 0)).sum())
-    p_rep = binomtest(r01, r01 + r10, 0.5).pvalue if r01 + r10 else float("nan")
+    p_rep = cluster_randomization_pvalue(
+        (c2.loc[rc, "correct"] - leg.loc[rc, "correct"]).to_numpy(),
+        c2.loc[rc, "uid"].to_numpy(),
+    )
     print(f"\nreproduction  : legacy {100*leg.loc[rc,'correct'].mean():.2f}%  "
           f"fresh {100*c2.loc[rc,'correct'].mean():.2f}%  per-item agreement {100*agree:.1f}%")
-    print(f"                discordant {r01}+{r10}, McNemar p={p_rep:.3f}  (n={len(rc)})")
+    print(f"                discordant {r01}+{r10}, cluster-randomization p={p_rep:.3f}  (n={len(rc)})")
 
     save(pd.DataFrame([dict(
         contrast="C3 - C2 (qwen2.5:14b)", n=len(common),
         c2_acc=round(100*a["correct"].mean(), 2), c3_acc=round(100*b["correct"].mean(), 2),
         delta=round(100*pt, 2), ci_lo=round(100*lo, 2), ci_hi=round(100*hi, 2),
-        c3_fixes=b01, c3_breaks=b10, mcnemar_p=round(p_mc, 4),
+        c3_fixes=b01, c3_breaks=b10, cluster_p=round(p_cluster, 4),
         c2_dprime=round(d2, 2), c3_dprime=round(d3, 2),
         c2_criterion=round(c2c, 2), c3_criterion=round(c3c, 2),
         repro_legacy=round(100*leg.loc[rc, "correct"].mean(), 2),
-        repro_agreement=round(100*agree, 1), repro_mcnemar_p=round(p_rep, 4),
+        repro_agreement=round(100*agree, 1), repro_cluster_p=round(p_rep, 4),
     )]), "ladder_c3_minus_c2.csv")
 
     verdict = "null" if lo < 0 < hi else ("positive" if lo > 0 else "negative")
@@ -180,7 +183,7 @@ perceptual interface and nothing else.
 Task-conditioning does not help ({verdict}): {100*a['correct'].mean():.1f}\\%
 role-blind against {100*b['correct'].mean():.1f}\\% role-aware over {len(common)}
 paired problems, a difference of {100*pt:+.1f} points (95\\% cluster-bootstrap CI
-[{100*lo:+.1f}, {100*hi:+.1f}]; exact McNemar $p={p_mc:.2f}$ on
+[{100*lo:+.1f}, {100*hi:+.1f}]; cluster-randomization $p={p_cluster:.2f}$ on
 {b01}+{b10} discordant pairs). Sensitivity tells the same story
 ($d' = {d2:.2f}$ blind, ${d3:.2f}$ aware). Per the pre-registered reading rule,
 this null is local to the tested models, prompts and tasks; but it is the
@@ -195,7 +198,7 @@ through the new pipeline reproduces the archived legacy result to within
 {abs(100*leg.loc[rc,'correct'].mean() - 100*c2.loc[rc,'correct'].mean()):.1f}
 points ({100*leg.loc[rc,'correct'].mean():.2f}\\% archived,
 {100*c2.loc[rc,'correct'].mean():.2f}\\% reproduced; per-item agreement
-{100*agree:.1f}\\%, McNemar $p={p_rep:.2f}$).
+{100*agree:.1f}\\%, cluster-randomization $p={p_rep:.2f}$).
 """)
 
 

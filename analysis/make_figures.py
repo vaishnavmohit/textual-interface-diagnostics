@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Publication figures and LaTeX tables from the stats outputs.
 
-Consumes accuracy_with_ci.csv (and optionally paired_mcnemar.csv) from
+Consumes accuracy_with_ci.csv (and optionally paired_cluster_tests.csv) from
 statistics.py and writes, under <out>:
   figures/<experiment>_ladder.png   accuracy by condition (bars + 95% CI), per model
   figures/*_caption.txt              a caption stub per figure
   tables/accuracy.tex                the main results table (acc [CI])
-  tables/paired_mcnemar.tex          the contrast table, if present
+  tables/paired_cluster_tests.tex    the contrast table, if present
 
 Styling follows hmr's analysis_pipeline.py (whitegrid, 300 dpi, titles removed —
 captions live in LaTeX). No result values are hard-coded; everything is read
@@ -125,7 +125,7 @@ def accuracy_tex(acc: pd.DataFrame, out: Path):
 
 
 def paired_tex(stats_dir: Path, out: Path):
-    src = stats_dir / "paired_mcnemar.csv"
+    src = stats_dir / "paired_cluster_tests.csv"
     if not src.exists():
         return
     d = pd.read_csv(src)
@@ -143,14 +143,14 @@ def paired_tex(stats_dir: Path, out: Path):
             cells.append(f"{v:.3g}" if isinstance(v, float) else _tex_escape(v))
         lines.append(" & ".join(cells) + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
-    (tables / "paired_mcnemar.tex").write_text("\n".join(lines))
-    print("  tables/paired_mcnemar.tex")
+    (tables / "paired_cluster_tests.tex").write_text("\n".join(lines))
+    print("  tables/paired_cluster_tests.tex")
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--stats", required=True, help="dir with accuracy_with_ci.csv (+ paired_mcnemar.csv)")
+    ap.add_argument("--stats", required=True, help="dir with accuracy_with_ci.csv (+ paired_cluster_tests.csv)")
     ap.add_argument("--out", required=True, help="output dir for figures/ and tables/")
     args = ap.parse_args()
     stats_dir = Path(args.stats).expanduser(); out = Path(args.out).expanduser()
